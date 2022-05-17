@@ -1,0 +1,25 @@
+.hourContainer {
+  .listWrapper {
+    overflow: scroll;
+    white-space: nowrap;
+
+    .itemContainer {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      text-align: center;
+
+      .hourItem {
+        > p {
+          + p {
+            margin-top: 10px;
+          }
+        }
+      }
+
+      + .itemContainer {
+        margin-left: 10px;
+      }
+    }
+  }
+}

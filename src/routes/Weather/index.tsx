@@ -2,7 +2,8 @@ import styles from './weather.module.scss'
 import { useQuery } from 'react-query'
 
 import { getWeatherForecastCurrent, getWeatherForecastTimePer } from 'services/weather'
-import CurrentWeather from './CurrentWeather'
+import CurrentWeather from 'components/CurrentWeather'
+import HourlyWeather from 'components/HourlyWeather'
 
 const LAT = 35.85
 const LON = 128.56
@@ -28,6 +29,7 @@ const Weather = () => {
   return (
     <div className={styles.container}>
       <CurrentWeather currentData={currentData} timePerData={timePerData} />
+      <HourlyWeather timePerData={timePerData} />
     </div>
   )
 }

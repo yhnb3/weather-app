@@ -80,7 +80,7 @@ interface IWeatherItem {
   description: string
   icon: string
 }
-interface IDaily {
+export interface IDaily {
   clouds: number
   dew_point: number
   dt: number
@@ -100,7 +100,7 @@ interface IDaily {
   wind_gust: number
   wind_speed: number
 }
-interface IHourly {
+export interface IHourly {
   clouds: number
   dew_point: number
   dt: number

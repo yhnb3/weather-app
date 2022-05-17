@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import styles from './weather.module.scss'
+import styles from './currentWeather.module.scss'
 
 import getDay from 'utils/getDay'
 import { ICurrentWeather, ITimePerWeather } from 'types/weather.d'
