@@ -20,10 +20,7 @@ interface IMain {
   temp_min: number
   temp_max: number
   pressure: number
-  sea_level: number
-  grnd_level: number
   humidity: number
-  temp_kf: number
 }
 
 interface IWeather {
@@ -32,18 +29,27 @@ interface IWeather {
   description: string
   icon: string
 }
-
-export interface IListItem {
-  dt: number
-  main: IMain
-  weather: IWeather[]
+interface ISys {
+  country: string
+  id: number
+  sunrise: number
+  sunset: number
+  type: number
+}
+export interface ICurrentWeather {
+  base: string
   clouds: {
     all: number
   }
+  cod: number
+  dt: number
+  id: number
+  name: string
+  main: IMain
+  weather: IWeather[]
   wind: {
     speed: number
     deg: number
-    gust: number
   }
   visibility: number
   pop: number
@@ -53,13 +59,69 @@ export interface IListItem {
   sys: {
     pod: string
   }
-  dt_txt: string
+}
+interface IFeelsLike {
+  day: number
+  night: number
+  eve: number
+  morn: number
+}
+interface ITemp {
+  day: number
+  eve: number
+  max: number
+  min: number
+  morn: number
+  night: number
+}
+interface IWeatherItem {
+  id: number
+  main: string
+  description: string
+  icon: string
+}
+interface IDaily {
+  clouds: number
+  dew_point: number
+  dt: number
+  feels_like: IFeelsLike
+  humidity: number
+  moon_phase: number
+  moonrise: number
+  moonset: number
+  pop: number
+  pressure: number
+  sunrise: number
+  sunset: number
+  temp: ITemp
+  uvi: number
+  weather: IWeatherItem[]
+  wind_deg: number
+  wind_gust: number
+  wind_speed: number
+}
+interface IHourly {
+  clouds: number
+  dew_point: number
+  dt: number
+  feels_like: number
+  humidity: number
+  pop: number
+  pressure: number
+  temp: number
+  uvi: number
+  visibility: number
+  weather: IWeatherItem[]
+  wind_deg: number
+  wind_gust: number
+  wind_speed: number
 }
 
-export interface IWeatherAPIRes {
-  cod: string
-  message: number
-  cnt: number
-  list: IListItem[]
-  city: ICity
+export interface ITimePerWeather {
+  lat: number
+  lon: number
+  timezone: string
+  timezone_offset: number
+  daily: IDaily[]
+  hourly: IHourly[]
 }

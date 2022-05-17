@@ -1,26 +1,33 @@
-import { useQuery } from 'react-query'
-import dayjs from 'dayjs'
 import styles from './weather.module.scss'
+import { useQuery } from 'react-query'
 
-import getDay from 'utils/getDay'
+import { getWeatherForecastCurrent, getWeatherForecastTimePer } from 'services/weather'
 import CurrentWeather from './CurrentWeather'
 
-const Weather = () => {
-  const lat = 35.85
-  const lon = 128.56
-  // const { isLoading, error, data } = useQuery('repoData', () =>
-  //   fetch(
-  //     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=kr&appid=${process.env.REACT_APP_WEATHER_APP_ID}`
-  //   ).then((res) => res.json())
-  // )
+const LAT = 35.85
+const LON = 128.56
 
-  // if (isLoading) return <p>loading...</p>
-  // if (error) return <p>error</p>
-  // console.log(data)
+const Weather = () => {
+  const {
+    data: currentData,
+    isLoading: currentIsLoading,
+    error: currentError,
+  } = useQuery(['currentTempData', LAT, LON], () =>
+    getWeatherForecastCurrent({ lat: LAT, lon: LON }).then((res) => res.data)
+  )
+  const {
+    data: timePerData,
+    isLoading: timePerIsLoading,
+    error: timePerError,
+  } = useQuery(['dailyTempData', LAT, LON], () =>
+    getWeatherForecastTimePer({ lat: LAT, lon: LON }).then((res) => res.data)
+  )
+  if (currentIsLoading || timePerIsLoading) return <p>loading...</p>
+  if (currentError || timePerError) return <p>error</p>
 
   return (
     <div className={styles.container}>
-      <CurrentWeather lat={lat} lon={lon} />
+      <CurrentWeather currentData={currentData} timePerData={timePerData} />
     </div>
   )
 }
