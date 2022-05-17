@@ -1,0 +1,46 @@
+.container {
+  .current {
+    padding: 20px 10px;
+
+    &Main {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &Left {
+        .temperature {
+          font-size: 60px;
+          font-weight: 200;
+        }
+        font-size: 20px;
+
+        p {
+          + p {
+            margin-top: 10px;
+          }
+        }
+      }
+
+      &Right {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    p {
+      font-size: 13px;
+      font-weight: 600;
+
+      &.city {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: 25px;
+        font-weight: 500;
+      }
+
+      .feelsLike {
+        margin: 0 5px;
+      }
+    }
+  }
+}

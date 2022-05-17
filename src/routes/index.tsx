@@ -8,7 +8,7 @@ const App = () => {
     <div className={styles.appWrapper}>
       <div className={styles.app}>
         <Routes>
-          <Route path='weather' element={<Weather />}>
+          <Route path='/' element={<Weather />}>
             <Route path=':city' element={<Weather />} />
           </Route>
           <Route path='*' element={<div>404</div>} />
