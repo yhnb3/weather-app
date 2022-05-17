@@ -16,7 +16,12 @@ const HourListItem = ({ data }: IProps) => {
         <p>
           {ampm} {hour}시
         </p>
-        <p>{data.weather[0].description}</p>
+        <img
+          draggable='false'
+          className={styles.icon}
+          src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+          alt={data.weather[0].description}
+        />
         <p>
           {Math.round(data.temp)}
           <sup>°</sup>

@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 import styles from './currentWeather.module.scss'
 
-import getDay from 'utils/getDay'
 import { ICurrentWeather, ITimePerWeather } from 'types/weather.d'
 
 interface IProps {
@@ -25,15 +24,20 @@ const CurrentWeather = ({ currentData, timePerData }: IProps) => {
             <sup>°</sup>
           </p>
         </div>
-        <div className={styles.currentMainRight}>{currentData.weather[0].description}</div>
+        <div className={styles.currentMainRight}>
+          <img
+            src={` http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png`}
+            alt={currentData.weather[0].description}
+          />
+        </div>
       </div>
       <p className={styles.city}>{currentData.name}</p>
       <p>
         {Math.round(dailyData[0].temp.max)}° / {Math.round(timePerData.daily[0].temp.min)}°{' '}
         <span className={styles.feelsLike}>체감온도 {Math.round(currentData.main.feels_like)}°</span>
       </p>
-      <p>
-        {getDay(Number(dayjs.unix(currentData.dt).format('d')))}, {ampm} {dayjs.unix(currentData.dt).format('h:m')}
+      <p className={styles.updateTime}>
+        Updated at {ampm} {dayjs.unix(currentData.dt).format('h:mm')}{' '}
       </p>
     </div>
   )

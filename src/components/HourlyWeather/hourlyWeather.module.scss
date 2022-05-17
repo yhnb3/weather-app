@@ -1,4 +1,6 @@
 .hourContainer {
+  margin: 35px 0;
+
   .listWrapper {
     overflow: scroll;
     white-space: nowrap;
@@ -10,6 +12,14 @@
       text-align: center;
 
       .hourItem {
+        user-select: none;
+
+        img {
+          width: 40px;
+          height: 40px;
+          margin: 10px 0;
+        }
+
         > p {
           + p {
             margin-top: 10px;
@@ -18,7 +28,7 @@
       }
 
       + .itemContainer {
-        margin-left: 10px;
+        margin-left: 15px;
       }
     }
   }
