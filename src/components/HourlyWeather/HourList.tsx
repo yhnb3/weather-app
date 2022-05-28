@@ -1,5 +1,14 @@
 import { useState, MouseEvent, useRef } from 'react'
-import { VictoryChart, VictoryLine, VictoryVoronoiContainer, VictoryZoomContainer } from 'victory'
+import {
+  VictoryAxis,
+  VictoryChart,
+  VictoryContainer,
+  VictoryLine,
+  VictoryScatter,
+  VictoryTheme,
+  VictoryVoronoiContainer,
+  VictoryZoomContainer,
+} from 'victory'
 
 import styles from './hourlyWeather.module.scss'
 import { IHourly } from 'types/weather.d'
@@ -13,6 +22,16 @@ const HourList = ({ hourlyData }: IProps) => {
   const [positionX, setPositionX] = useState(0)
   const [scrollX, setScrollX] = useState(0)
   const [isMouseDown, setIsMouseDown] = useState(false)
+  let minTemp = 1000
+  let maxTemp = 0
+  const hourData = hourlyData.map((item) => {
+    minTemp = Math.min(minTemp, item.temp)
+    maxTemp = Math.max(maxTemp, item.temp)
+    return {
+      y: item.temp,
+      x: String(item.temp),
+    }
+  })
 
   const handleMouseDown = (event: MouseEvent) => {
     setIsMouseDown(true)
@@ -56,6 +75,41 @@ const HourList = ({ hourlyData }: IProps) => {
           <HourListItem data={data} key={data.dt} />
         ))}
       </ul>
+      <VictoryChart
+        theme={VictoryTheme.material}
+        width={58 * 18}
+        height={70}
+        padding={{ top: 15, left: 18, right: 18, bottom: 15 }}
+        containerComponent={<VictoryContainer responsive={false} />}
+      >
+        <VictoryAxis
+          dependentAxis
+          tickValues={[minTemp - 1, maxTemp + 1]}
+          style={{
+            tickLabels: { fill: 'none' },
+            axis: { strokeWidth: 0 },
+            ticks: { size: 0 },
+            grid: { strokeWidth: 0 },
+          }}
+        />
+        <VictoryAxis
+          height={0}
+          style={{
+            tickLabels: { fill: 'none' },
+            axis: { strokeWidth: 0 },
+            ticks: { size: 0 },
+            grid: { strokeWidth: 0 },
+          }}
+        />
+        <VictoryLine
+          interpolation='natural'
+          style={{
+            data: { stroke: 'black' },
+          }}
+          data={hourData}
+        />
+        <VictoryScatter style={{ data: { fill: 'black' } }} size={2} data={hourData} />
+      </VictoryChart>
     </div>
   )
 }

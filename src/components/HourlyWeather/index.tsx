@@ -2,6 +2,7 @@ import styles from './hourlyWeather.module.scss'
 
 import { ITimePerWeather } from 'types/weather.d'
 import HourList from './HourList'
+import { VictoryAxis, VictoryChart, VictoryContainer, VictoryLine, VictoryTheme } from 'victory'
 
 interface IProps {
   timePerData: ITimePerWeather | undefined
