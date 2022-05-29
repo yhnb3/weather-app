@@ -1,0 +1,29 @@
+.itemContainer {
+  display: inline-block;
+  width: 40px;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+
+  .humidityItem {
+    display: inline-flex;
+    flex-direction: row;
+    height: 10px;
+    user-select: none;
+
+    .icon {
+      width: 10px;
+      height: 10px;
+    }
+
+    p {
+      height: 100%;
+      line-height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  + .itemContainer {
+    margin-left: 15px;
+  }
+}

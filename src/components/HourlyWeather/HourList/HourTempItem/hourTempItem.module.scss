@@ -1,0 +1,26 @@
+.itemContainer {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+
+  .hourItem {
+    user-select: none;
+
+    img {
+      width: 40px;
+      height: 40px;
+      margin: 10px 0;
+    }
+
+    > p {
+      + p {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  + .itemContainer {
+    margin-left: 15px;
+  }
+}
