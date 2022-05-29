@@ -19,9 +19,9 @@ const Chart = ({ hourlyData }: IProps) => {
   return (
     <VictoryChart
       theme={VictoryTheme.material}
-      width={58 * 18}
+      width={62.3 * 18}
       height={50}
-      padding={{ top: 15, left: 18, right: 18, bottom: 15 }}
+      padding={{ top: 15, left: 20, right: 20, bottom: 15 }}
       containerComponent={<VictoryContainer responsive={false} />}
     >
       <VictoryAxis

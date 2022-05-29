@@ -1,3 +1,28 @@
+@use '/src/styles/constants/colors';
+
 .hourContainer {
+  position: relative;
   margin: 35px 0;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    padding: 5px 0;
+    pointer-events: none;
+    content: linear-gradient(to right, transparent, rgba(colors.$WHITE, 100%));
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    padding: 5px 0;
+    pointer-events: none;
+    content: linear-gradient(to left, transparent, rgba(colors.$WHITE, 100%));
+  }
 }

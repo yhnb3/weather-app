@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import styles from './Routes.module.scss'
+import styles from './routes.module.scss'
 
 import Weather from './Weather'
 
