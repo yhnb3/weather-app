@@ -30,7 +30,7 @@ const Chart = ({ hourlyData }: IProps) => {
         style={{
           tickLabels: { fill: 'none' },
           axis: { strokeWidth: 0 },
-          ticks: { size: 0 },
+          ticks: { fill: 'transparent' },
           grid: { strokeWidth: 0 },
         }}
       />

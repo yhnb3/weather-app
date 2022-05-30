@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react'
+import { useState, MouseEvent, Dispatch, SetStateAction } from 'react'
 
 import styles from './hourList.module.scss'
 import { IHourly } from 'types/weather.d'
@@ -8,9 +8,11 @@ import HumidityItem from './HumidityItem'
 
 interface IProps {
   hourlyData: IHourly[]
+  setIsAfter: Dispatch<SetStateAction<boolean>>
+  setIsBefore: Dispatch<SetStateAction<boolean>>
 }
 
-const HourList = ({ hourlyData }: IProps) => {
+const HourList = ({ hourlyData, setIsAfter, setIsBefore }: IProps) => {
   const [positionX, setPositionX] = useState(0)
   const [scrollX, setScrollX] = useState(0)
   const [isMouseDown, setIsMouseDown] = useState(false)
@@ -25,6 +27,17 @@ const HourList = ({ hourlyData }: IProps) => {
     if (isMouseDown) {
       const dx = positionX - event.clientX
       const width = event.currentTarget.scrollWidth
+      if (event.currentTarget.scrollLeft === 0) {
+        setIsBefore(false)
+      } else {
+        setIsBefore(true)
+      }
+      if (event.currentTarget.scrollLeft + event.currentTarget.clientWidth === width) {
+        setIsAfter(false)
+      } else {
+        setIsAfter(true)
+      }
+
       if (scrollX + dx <= 0) {
         event.currentTarget.scrollLeft = 0
       } else if (scrollX + dx >= width) {
