@@ -1,13 +1,16 @@
+import { Dispatch, SetStateAction } from 'react'
 import dayjs from 'dayjs'
-import styles from './currentWeather.module.scss'
 
 import { ICurrentWeather, ITimePerWeather } from 'types/weather.d'
+import styles from './currentWeather.module.scss'
+import { Hamburger } from 'assets/svgs'
 
 interface IProps {
   currentData: ICurrentWeather | undefined
   timePerData: ITimePerWeather | undefined
+  setIsAside: Dispatch<SetStateAction<boolean>>
 }
-const CurrentWeather = ({ currentData, timePerData }: IProps) => {
+const CurrentWeather = ({ currentData, timePerData, setIsAside }: IProps) => {
   if (currentData === undefined) return null
   if (timePerData === undefined) return null
 
@@ -15,8 +18,16 @@ const CurrentWeather = ({ currentData, timePerData }: IProps) => {
 
   const ampm = dayjs.unix(currentData.dt).format('A') === 'PM' ? '오후' : '오전'
 
+  const handleHamburgerClick = () => {
+    setIsAside(true)
+  }
+
   return (
     <div className={styles.current}>
+      <button type='button' onClick={handleHamburgerClick}>
+        <Hamburger className={styles.hamburgerIcon} />
+      </button>
+
       <div className={styles.currentMain}>
         <div className={styles.currentMainLeft}>
           <p className={styles.temperature}>

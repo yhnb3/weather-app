@@ -30,7 +30,7 @@ const Chart = ({ hourlyData }: IProps) => {
         style={{
           tickLabels: { fill: 'none' },
           axis: { strokeWidth: 0 },
-          ticks: { fill: 'transparent' },
+          ticks: { strokeWidth: 0 },
           grid: { strokeWidth: 0 },
         }}
       />
@@ -39,18 +39,18 @@ const Chart = ({ hourlyData }: IProps) => {
         style={{
           tickLabels: { fill: 'none' },
           axis: { strokeWidth: 0 },
-          ticks: { size: 0 },
+          ticks: { strokeWidth: 0 },
           grid: { strokeWidth: 0 },
         }}
       />
       <VictoryLine
         interpolation='natural'
         style={{
-          data: { stroke: 'black' },
+          data: { stroke: '#fff' },
         }}
         data={hourData}
       />
-      <VictoryScatter style={{ data: { fill: 'black' } }} size={2} data={hourData} />
+      <VictoryScatter style={{ data: { fill: '#fff' } }} size={2} data={hourData} />
     </VictoryChart>
   )
 }

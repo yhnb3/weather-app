@@ -2,7 +2,9 @@
 
 .hourContainer {
   position: relative;
-  margin: 35px 0;
+  padding: 15px;
+  background-color: colors.$SKYBLUE_SECONDATY;
+  border-radius: 15px;
 
   &.notIsAfter {
     &::after {
@@ -12,33 +14,33 @@
 
   &.notIsBefore {
     &::before {
-      content: '';
+      content: none;
     }
   }
 
   &::after {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 15px;
     width: 20px;
     height: 100%;
-    padding: 5px 0;
+    padding: 15px 0;
     pointer-events: none;
-    content: linear-gradient(to right, transparent, rgba(colors.$WHITE, 100%));
+    content: linear-gradient(to right, transparent, colors.$SKYBLUE_SECONDATY);
   }
 
   &::before {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 15px;
     width: 20px;
     height: 100%;
-    padding: 5px 0;
+    padding: 15px 0;
     pointer-events: none;
-    content: linear-gradient(to left, transparent, rgba(colors.$WHITE, 100%));
+    content: linear-gradient(to left, transparent, colors.$SKYBLUE_SECONDATY);
 
     &.notIsBefore {
-      content: '';
+      content: none;
     }
   }
 }

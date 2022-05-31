@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const HumidityItem = ({ data }: IProps) => {
-  const icon = useMemo(() => {
+  const humidityIcon = useMemo(() => {
     if (data.humidity >= 80) return <WaterDrop className={styles.icon} />
     if (data.humidity >= 20) return <HalfWaterDrop className={styles.icon} />
     return <EmptyWaterDrop className={styles.icon} />
@@ -16,7 +16,7 @@ const HumidityItem = ({ data }: IProps) => {
   return (
     <li className={styles.itemContainer}>
       <div className={styles.humidityItem}>
-        {icon}
+        {humidityIcon}
         <p>{data.humidity}%</p>
       </div>
     </li>

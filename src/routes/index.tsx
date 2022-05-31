@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import styles from './routes.module.scss'
 
@@ -7,12 +8,14 @@ const App = () => {
   return (
     <div className={styles.appWrapper}>
       <div className={styles.app}>
-        <Routes>
-          <Route path='/' element={<Weather />}>
-            <Route path=':city' element={<Weather />} />
-          </Route>
-          <Route path='*' element={<div>404</div>} />
-        </Routes>
+        <Suspense>
+          <Routes>
+            <Route path='/' element={<Weather />}>
+              <Route path=':city' element={<Weather />} />
+            </Route>
+            <Route path='*' element={<div>404</div>} />
+          </Routes>
+        </Suspense>
       </div>
     </div>
   )

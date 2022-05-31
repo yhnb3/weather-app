@@ -1,5 +1,43 @@
+@use '/src/styles/constants/levels';
+@use '/src/styles/constants/colors';
+
 .container {
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  transition: transform ease-out 0.4s;
+
+  &.isAside {
+    transform: translate(300px, 0);
+  }
+
+  header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: levels.$HEADER;
+    width: 100%;
+    height: 220px;
+    background-color: colors.$WHITE;
+  }
+
+  main {
+    height: 640px;
+    padding-top: 220px;
+    overflow: auto;
+  }
+
+  aside {
+    position: absolute;
+    top: 0;
+    left: -310px;
+    width: 300px;
+    height: 100%;
+    background-color: colors.$BLACK;
+    border-radius: 0 20px 0 0;
+
+    &.isAside {
+      backdrop-filter: blur(50px);
+    }
+  }
 }

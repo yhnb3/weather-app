@@ -6,13 +6,15 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: colors.$TEAL;
+  background-color: colors.$WHITE;
 }
 
 .app {
   width: 360px;
   height: 720px;
-  padding: 40px 20px;
-  background-color: colors.$WHITE;
+  padding: 20px 10px;
+  overflow: hidden;
+  color: colors.$WHITE;
+  background-color: colors.$SKYBLUE;
   border-radius: 20px;
 }

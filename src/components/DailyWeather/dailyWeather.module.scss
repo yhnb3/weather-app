@@ -1,4 +1,11 @@
+@use '/src/styles/constants/colors';
+
 .dailyWrapper {
+  padding: 15px;
+  margin-top: 20px;
+  background-color: colors.$SKYBLUE_SECONDATY;
+  border-radius: 15px;
+
   .dailyItem {
     display: flex;
     flex-direction: row;
@@ -8,7 +15,22 @@
       display: flex;
       flex-direction: row;
 
-      .icon {
+      .humidity {
+        height: 20px;
+        margin: 10px 0;
+        font-size: 11px;
+        line-height: 10px;
+        vertical-align: middle;
+
+        .icon {
+          width: 10px;
+          height: 10px;
+          margin: 0 5px;
+          fill: colors.$WHITE;
+        }
+      }
+
+      .image {
         width: 30px;
         height: 30px;
         margin: 0 30px;
@@ -17,7 +39,8 @@
 
     span {
       height: 30px;
-      font-size: 15px;
+      font-size: 13px;
+      font-weight: 600;
       line-height: 30px;
       text-align: center;
       vertical-align: middle;

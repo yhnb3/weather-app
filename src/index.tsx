@@ -10,7 +10,16 @@ import './styles/index.scss'
 import Routes from './routes'
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { refetchOnMount: false } },
+  defaultOptions: {
+    queries: {
+      refetchOnMount: false,
+      staleTime: 60 * 60 * 1000,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+      suspense: true,
+      refetchInterval: 60 * 60 * 1000,
+    },
+  },
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
