@@ -57,7 +57,9 @@ export interface ICurrentWeather {
     '3h': number
   }
   sys: {
-    pod: string
+    country: string
+    sunrise: number
+    sunset: number
   }
 }
 interface IFeelsLike {

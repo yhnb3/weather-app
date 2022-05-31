@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals'
 import './styles/index.scss'
 
 import Routes from './routes'
+import { RecoilRoot } from 'recoil'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,12 +26,14 @@ const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools />
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>
 )
 

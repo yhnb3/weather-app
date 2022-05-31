@@ -1,0 +1,43 @@
+@use '/src/styles/constants/colors';
+
+.sunTimeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 0;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: colors.$SKYBLUE_SECONDATY;
+  border-radius: 15px;
+
+  .itemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .type {
+      font-size: 15px;
+    }
+
+    .time {
+      margin-top: 10px;
+      font-size: 17px;
+    }
+
+    .sunriseIcon {
+      width: 40px;
+      height: 40px;
+      margin-top: 10px;
+      fill: colors.$YELLOW;
+    }
+
+    .sunsetIcon {
+      width: 40px;
+      height: 40px;
+      margin-top: 10px;
+      fill: colors.$ORANGE;
+    }
+  }
+}

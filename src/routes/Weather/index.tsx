@@ -1,23 +1,26 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
+import { useRecoilValue } from 'recoil'
 import cx from 'classnames'
 
+import { defaultLoactionState } from 'states/location'
 import { getWeatherForecastCurrent, getWeatherForecastTimePer } from 'services/weather'
-import { CurrentWeather, HourlyWeather, DailyWeather } from 'components'
+import { CurrentWeather, HourlyWeather, DailyWeather, EtcInfo } from 'components'
 import styles from './weather.module.scss'
 import Aside from 'routes/_shared/Aside'
-
-const LAT = 35.85
-const LON = 128.56
+import SunTime from 'components/SunTime'
 
 const Weather = () => {
+  const { lat, lon } = useRecoilValue(defaultLoactionState)
   const [isAside, setIsAside] = useState(false)
-  const { data: currentData } = useQuery(['currentTempData', LAT, LON], () =>
-    getWeatherForecastCurrent({ lat: LAT, lon: LON }).then((res) => res.data)
+  const { data: currentData } = useQuery(['currentTempData', lat, lon], () =>
+    getWeatherForecastCurrent({ lat, lon }).then((res) => res.data)
   )
-  const { data: timePerData } = useQuery(['dailyTempData', LAT, LON], () =>
-    getWeatherForecastTimePer({ lat: LAT, lon: LON }).then((res) => res.data)
+  const { data: timePerData } = useQuery(['dailyTempData', lat, lon], () =>
+    getWeatherForecastTimePer({ lat, lon }).then((res) => res.data)
   )
+
+  if (!currentData || !timePerData) return <p>로딩중..</p>
 
   return (
     <div className={cx(styles.container, { [styles.isAside]: isAside })}>
@@ -27,6 +30,12 @@ const Weather = () => {
       <main>
         <HourlyWeather timePerData={timePerData} />
         <DailyWeather timePerData={timePerData} />
+        <SunTime sunRise={currentData.sys.sunrise} sunSet={currentData.sys.sunset} />
+        <EtcInfo
+          uvi={timePerData.daily[0].uvi}
+          humidity={timePerData.daily[0].humidity}
+          wind={timePerData.daily[0].wind_speed}
+        />
       </main>
       <aside className={cx({ [styles.isAside]: isAside })}>
         <Aside setIsAside={setIsAside} />

@@ -1,3 +1,5 @@
 export { default as CurrentWeather } from './CurrentWeather'
 export { default as DailyWeather } from './DailyWeather'
 export { default as HourlyWeather } from './HourlyWeather'
+export { default as SunTime } from './SunTime'
+export { default as EtcInfo } from './EtcInfo'

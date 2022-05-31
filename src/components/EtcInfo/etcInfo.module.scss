@@ -1,0 +1,50 @@
+@use '/src/styles/constants/colors';
+
+.etcInfoContainer {
+  display: flex;
+  padding: 20px 10px;
+  margin-top: 20px;
+  background-color: colors.$SKYBLUE_SECONDATY;
+  border-radius: 15px;
+
+  .infoItem {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    + .infoItem {
+      border-left: 1px solid colors.$GRAYA;
+    }
+
+    .type {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .value {
+      margin-top: 5px;
+      font-size: 12px;
+      color: colors.$GRAYA;
+    }
+
+    .glassIcon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .humidityIcon {
+      width: 40px;
+      height: 40px;
+      fill: colors.$BLUE;
+    }
+
+    .windIcon {
+      width: 40px;
+      height: 40px;
+      fill: colors.$GRAYA;
+    }
+  }
+}
