@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className={styles.appWrapper}>
       <div className={styles.app}>
-        <Suspense>
+        <Suspense fallback={<p>로딩중...</p>}>
           <Routes>
             <Route path='/' element={<Weather />}>
               <Route path=':city' element={<Weather />} />

@@ -1,4 +1,34 @@
+@use '/src/styles/constants/colors';
+
 .asideContainer {
   width: 100%;
   height: 100%;
+  padding: 60px 30px;
+
+  .locationContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+
+    + .locationContainer {
+      border-top: 2px dotted colors.$WHITE;
+    }
+
+    .title {
+      display: flex;
+
+      div {
+        height: 25px;
+        margin-left: 20px;
+        font-size: 12px;
+        line-height: 25px;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .icon {
+        fill: colors.$WHITE;
+      }
+    }
+  }
 }
