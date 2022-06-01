@@ -20,8 +20,11 @@ const Weather = () => {
     getWeatherForecastTimePer({ lat, lon }).then((res) => res.data)
   )
 
-  if (!currentData || !timePerData) return <p>로딩중..</p>
+  // const { data: locationData } = useQuery(['locationData', KEYWORD], () => {
+  //   getLocation(KEYWORD).then((res) => console.log(res.data))
+  // })
 
+  if (!currentData || !timePerData) return null
   return (
     <div className={cx(styles.container, { [styles.isAside]: isAside })}>
       <header>

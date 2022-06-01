@@ -26,6 +26,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy":"https://naveropenapi.apigw.ntruss.com",
   "resolutions": {
     "react-i18next": ">=11.16.4"
   },
