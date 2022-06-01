@@ -37,7 +37,7 @@ const CurrentWeather = ({ currentData, timePerData, setIsAside }: IProps) => {
         </div>
         <div className={styles.currentMainRight}>
           <img
-            src={` http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png`}
+            src={`http://openweathermap.org/img/wn/${currentData.weather[0].icon}@2x.png`}
             alt={currentData.weather[0].description}
           />
         </div>

@@ -8,7 +8,7 @@
   .locationContainer {
     display: flex;
     flex-direction: column;
-    padding: 20px 10px;
+    padding: 20px 10px 10px;
 
     + .locationContainer {
       border-top: 2px dotted colors.$WHITE;
@@ -29,6 +29,10 @@
       .icon {
         fill: colors.$WHITE;
       }
+    }
+
+    .locationList {
+      padding: 10px 10px 10px 44px;
     }
   }
 }

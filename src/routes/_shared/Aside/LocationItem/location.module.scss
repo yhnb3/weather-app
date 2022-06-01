@@ -1,0 +1,35 @@
+.locationItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30px;
+
+  .locationName {
+    height: 30px;
+    font-size: 13px;
+    line-height: 30px;
+    text-align: center;
+
+    &.isBold {
+      font-weight: 600;
+    }
+  }
+
+  .locationTemp {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+
+    .tempImg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .temp {
+      height: 30px;
+      font-size: 11px;
+      line-height: 30px;
+      text-align: center;
+    }
+  }
+}

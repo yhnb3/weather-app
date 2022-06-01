@@ -26,13 +26,14 @@ const HourList = ({ hourlyData, setIsAfter, setIsBefore }: IProps) => {
   const handleMouseMove = (event: MouseEvent) => {
     if (isMouseDown) {
       const dx = positionX - event.clientX
-      const width = event.currentTarget.scrollWidth
+      const { clientWidth, scrollWidth } = event.currentTarget
+
       if (event.currentTarget.scrollLeft === 0) {
         setIsBefore(false)
       } else {
         setIsBefore(true)
       }
-      if (event.currentTarget.scrollLeft + event.currentTarget.clientWidth === width) {
+      if (event.currentTarget.scrollLeft + clientWidth + 1 >= scrollWidth) {
         setIsAfter(false)
       } else {
         setIsAfter(true)
@@ -40,20 +41,22 @@ const HourList = ({ hourlyData, setIsAfter, setIsBefore }: IProps) => {
 
       if (scrollX + dx <= 0) {
         event.currentTarget.scrollLeft = 0
-      } else if (scrollX + dx >= width) {
-        event.currentTarget.scrollLeft = width
+      } else if (scrollX + dx + clientWidth >= scrollWidth) {
+        event.currentTarget.scrollLeft = scrollWidth - clientWidth
       } else {
         event.currentTarget.scrollLeft = scrollX + dx
       }
     }
   }
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (event: MouseEvent) => {
     setIsMouseDown(false)
+    setScrollX(event.currentTarget.scrollLeft)
   }
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (event: MouseEvent) => {
     setIsMouseDown(false)
+    setScrollX(event.currentTarget.scrollLeft)
   }
   return (
     <div

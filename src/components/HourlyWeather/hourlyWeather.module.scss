@@ -14,7 +14,7 @@
 
   &.notIsBefore {
     &::before {
-      content: none;
+      content: '';
     }
   }
 
@@ -38,9 +38,5 @@
     padding: 15px 0;
     pointer-events: none;
     content: linear-gradient(to left, transparent, colors.$SKYBLUE_SECONDATY);
-
-    &.notIsBefore {
-      content: none;
-    }
   }
 }
