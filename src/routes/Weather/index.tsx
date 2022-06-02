@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { useParams } from 'react-router-dom'
 import cx from 'classnames'
@@ -10,12 +9,13 @@ import { useTempQuery } from 'hooks/useTempQuery'
 import styles from './weather.module.scss'
 import Aside from 'routes/_shared/Aside'
 import SunTime from 'components/SunTime'
+import { asideOpenState } from 'states/aside'
 
 const Weather = () => {
-  const { id } = useParams()
+  const { city } = useParams()
   const locationData = useRecoilValue(locationState)
-  const targetIdx = !id ? 0 : locationData.findIndex((location) => location.name === id)
-  const [isAside, setIsAside] = useState(false)
+  const targetIdx = !city ? 0 : locationData.findIndex((location) => location.name === city)
+  const isAside = useRecoilValue(asideOpenState)
 
   const { lat, lon } = locationData[targetIdx]
 
@@ -28,7 +28,7 @@ const Weather = () => {
   return (
     <div className={cx(styles.container, { [styles.isAside]: isAside })}>
       <header>
-        <CurrentWeather currentData={currentData} timePerData={timePerData} setIsAside={setIsAside} />
+        <CurrentWeather currentData={currentData} timePerData={timePerData} />
       </header>
       <main>
         <HourlyWeather timePerData={timePerData} />
@@ -41,7 +41,7 @@ const Weather = () => {
         />
       </main>
       <aside className={cx({ [styles.isAside]: isAside })}>
-        <Aside setIsAside={setIsAside} />
+        <Aside />
       </aside>
     </div>
   )

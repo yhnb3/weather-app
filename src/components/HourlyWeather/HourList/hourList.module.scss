@@ -1,5 +1,8 @@
+@use '/src/styles/constants/colors';
+
 .listWrapper {
   padding: 5px 0;
   overflow: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
 }

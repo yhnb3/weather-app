@@ -1,21 +1,21 @@
-import { Dispatch, SetStateAction } from 'react'
 import dayjs from 'dayjs'
 
 import { ICurrentWeather, ITimePerWeather } from 'types/weather.d'
 import styles from './currentWeather.module.scss'
 import { Hamburger } from 'assets/svgs'
+import { useSetRecoilState } from 'recoil'
+import { asideOpenState } from 'states/aside'
 
 interface IProps {
   currentData: ICurrentWeather | undefined
   timePerData: ITimePerWeather | undefined
-  setIsAside: Dispatch<SetStateAction<boolean>>
 }
-const CurrentWeather = ({ currentData, timePerData, setIsAside }: IProps) => {
+const CurrentWeather = ({ currentData, timePerData }: IProps) => {
+  const setIsAside = useSetRecoilState(asideOpenState)
   if (currentData === undefined) return null
   if (timePerData === undefined) return null
 
   const { daily: dailyData } = timePerData
-
   const ampm = dayjs.unix(currentData.dt).format('A') === 'PM' ? '오후' : '오전'
 
   const handleHamburgerClick = () => {

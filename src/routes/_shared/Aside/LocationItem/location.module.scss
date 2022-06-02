@@ -1,8 +1,11 @@
+@use '/src/styles/constants/colors';
+
 .locationItem {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 30px;
+  color: colors.$WHITE;
 
   .locationName {
     height: 30px;

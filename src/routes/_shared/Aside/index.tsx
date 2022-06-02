@@ -1,16 +1,15 @@
 import { Location, Star } from 'assets/svgs'
-import { Dispatch, SetStateAction, useRef } from 'react'
+import { useRef } from 'react'
 import { useClickAway } from 'react-use'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { asideOpenState } from 'states/aside'
 import { locationState } from 'states/location'
 import styles from './aside.module.scss'
 import LocationItem from './LocationItem'
 
-interface IProps {
-  setIsAside: Dispatch<SetStateAction<boolean>>
-}
-const Aside = ({ setIsAside }: IProps) => {
+const Aside = () => {
   const asideRef = useRef(null)
+  const setIsAside = useSetRecoilState(asideOpenState)
   const locationData = useRecoilValue(locationState)
   const defaultData = locationData[0]
 
