@@ -1,0 +1,49 @@
+@use '/src/styles/constants/colors';
+
+.locationItem {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 70px;
+  padding: 15px 20px;
+  margin-top: 10px;
+  background-color: colors.$GRAY2;
+  border-radius: 20px;
+
+  .left {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+
+    .rightTop {
+      display: flex;
+
+      .tempImg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .temp {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+    }
+
+    .rightBottom {
+      display: flex;
+      justify-content: space-between;
+      height: 10px;
+      font-size: 10px;
+
+      .minMaxTemp {
+        color: colors.$GRAYA;
+      }
+    }
+  }
+}

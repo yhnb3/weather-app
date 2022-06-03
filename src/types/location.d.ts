@@ -6,3 +6,11 @@ export interface ILocationRes {
   y: string
   distance: number
 }
+
+export interface ILocationData {
+  lat: number
+  lon: number
+  name: string
+  currentData?: ICurrentWeather
+  timePerData?: ITimePerWeather
+}

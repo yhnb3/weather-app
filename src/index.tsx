@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
 import reportWebVitals from './reportWebVitals'
-import './styles/index.scss'
+import './styles/index.module.scss'
 
 import Routes from './routes'
 import { RecoilRoot } from 'recoil'

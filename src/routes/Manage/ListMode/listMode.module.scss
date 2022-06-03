@@ -1,0 +1,9 @@
+@use '/src/styles/constants/colors';
+
+.locationTitle {
+  padding: 5px 20px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: colors.$GRAYA;
+}

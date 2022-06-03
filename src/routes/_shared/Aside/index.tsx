@@ -1,5 +1,6 @@
 import { Location, Star } from 'assets/svgs'
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useClickAway } from 'react-use'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { asideOpenState } from 'states/aside'
@@ -13,9 +14,16 @@ const Aside = () => {
   const locationData = useRecoilValue(locationState)
   const defaultData = locationData[0]
 
+  const navigate = useNavigate()
+
   useClickAway(asideRef, () => {
     setIsAside(false)
   })
+
+  const handleClick = () => {
+    setIsAside(false)
+    navigate('manage')
+  }
 
   return (
     <div ref={asideRef} className={styles.asideContainer}>
@@ -42,6 +50,9 @@ const Aside = () => {
           </ul>
         </div>
       </div>
+      <button type='button' className={styles.controlButton} onClick={handleClick}>
+        지역 관리
+      </button>
     </div>
   )
 }

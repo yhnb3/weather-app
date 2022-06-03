@@ -1,0 +1,39 @@
+@use '/src/styles/constants/colors';
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+  padding: 0 10px;
+
+  .headerItem {
+    display: flex;
+    margin: 0 10px;
+
+    .title {
+      height: 100%;
+      margin-left: 15px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .angleIcon {
+      width: 20px;
+      height: 20px;
+      fill: colors.$WHITE;
+    }
+
+    .plusIcon {
+      width: 20px;
+      height: 20px;
+      fill: colors.$WHITE;
+    }
+
+    .input {
+      margin-left: 20px;
+      color: colors.$WHITE;
+    }
+  }
+}

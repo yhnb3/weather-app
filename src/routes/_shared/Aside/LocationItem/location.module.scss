@@ -7,6 +7,10 @@
   height: 30px;
   color: colors.$WHITE;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   .locationName {
     height: 30px;
     font-size: 13px;

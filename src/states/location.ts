@@ -1,13 +1,5 @@
 import { atom } from 'recoil'
-import { ICurrentWeather, ITimePerWeather } from 'types/weather'
-
-interface ILocationData {
-  lat: number
-  lon: number
-  name: string
-  currentData?: ICurrentWeather
-  timePerData?: ITimePerWeather
-}
+import { ILocationData } from 'types/location'
 
 export const locationState = atom<ILocationData[]>({
   key: '#defaultLocationState',

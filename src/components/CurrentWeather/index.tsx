@@ -9,8 +9,9 @@ import { asideOpenState } from 'states/aside'
 interface IProps {
   currentData: ICurrentWeather | undefined
   timePerData: ITimePerWeather | undefined
+  name: string
 }
-const CurrentWeather = ({ currentData, timePerData }: IProps) => {
+const CurrentWeather = ({ currentData, timePerData, name }: IProps) => {
   const setIsAside = useSetRecoilState(asideOpenState)
   if (currentData === undefined) return null
   if (timePerData === undefined) return null
@@ -42,7 +43,7 @@ const CurrentWeather = ({ currentData, timePerData }: IProps) => {
           />
         </div>
       </div>
-      <p className={styles.city}>{currentData.name}</p>
+      <p className={styles.city}>{name}</p>
       <p>
         {Math.round(dailyData[0].temp.max)}° / {Math.round(timePerData.daily[0].temp.min)}°{' '}
         <span className={styles.feelsLike}>체감온도 {Math.round(currentData.main.feels_like)}°</span>
