@@ -1,10 +1,12 @@
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import dayjs from 'dayjs'
+import cx from 'classnames'
 
 import { ICurrentWeather, ITimePerWeather } from 'types/weather.d'
 import styles from './currentWeather.module.scss'
 import { Hamburger } from 'assets/svgs'
-import { useSetRecoilState } from 'recoil'
 import { asideOpenState } from 'states/aside'
+import { themeState } from 'states/theme'
 
 interface IProps {
   currentData: ICurrentWeather | undefined
@@ -13,6 +15,8 @@ interface IProps {
 }
 const CurrentWeather = ({ currentData, timePerData, name }: IProps) => {
   const setIsAside = useSetRecoilState(asideOpenState)
+  const theme = useRecoilValue(themeState)
+  const isDark = theme === 'dark'
   if (currentData === undefined) return null
   if (timePerData === undefined) return null
 
@@ -24,7 +28,7 @@ const CurrentWeather = ({ currentData, timePerData, name }: IProps) => {
   }
 
   return (
-    <div className={styles.current}>
+    <div className={cx(styles.current, { [styles.isDark]: isDark })}>
       <button type='button' onClick={handleHamburgerClick}>
         <Hamburger className={styles.hamburgerIcon} />
       </button>

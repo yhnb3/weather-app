@@ -1,5 +1,9 @@
-import { Sunrise, Sunset } from 'assets/svgs'
 import dayjs from 'dayjs'
+import { useRecoilValue } from 'recoil'
+import cx from 'classnames'
+
+import { themeState } from 'states/theme'
+import { Sunrise, Sunset } from 'assets/svgs'
 import styles from './sunTime.module.scss'
 
 interface IProps {
@@ -8,6 +12,7 @@ interface IProps {
 }
 
 const SunTime = ({ sunRise, sunSet }: IProps) => {
+  const theme = useRecoilValue(themeState)
   const timeFormat = (time: number) => {
     const ampm = dayjs.unix(time).format('a') === 'am' ? '오전' : '오후'
     const hour = dayjs.unix(time).format('h')
@@ -15,7 +20,7 @@ const SunTime = ({ sunRise, sunSet }: IProps) => {
     return `${ampm} ${hour}:${minute}`
   }
   return (
-    <div className={styles.sunTimeContainer}>
+    <div className={cx(styles.sunTimeContainer, { [styles.isDark]: theme === 'dark' })}>
       <div className={styles.itemContainer}>
         <div className={styles.type}>일출</div>
         <div className={styles.time}>{timeFormat(sunRise)}</div>

@@ -6,6 +6,10 @@
   padding: 0 10px 10px;
   background-color: colors.$SKYBLUE;
 
+  &.isDark {
+    background-color: colors.$BLACK;
+  }
+
   .hamburgerIcon {
     width: 25px;
     height: 25px;

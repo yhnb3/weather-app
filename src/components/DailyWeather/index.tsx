@@ -6,11 +6,7 @@ interface IProps {
 }
 const DailyWeather = ({ timePerData }: IProps) => {
   if (!timePerData) return null
-  return (
-    <div>
-      <DailyList daily={timePerData.daily.slice(1)} />
-    </div>
-  )
+  return <DailyList daily={timePerData.daily.slice(1)} />
 }
 
 export default DailyWeather

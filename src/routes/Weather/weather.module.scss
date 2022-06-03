@@ -10,6 +10,10 @@
   background-color: colors.$SKYBLUE;
   border-radius: 20px;
 
+  &.isDark {
+    background-color: colors.$BLACK;
+  }
+
   .weaterContainer {
     position: relative;
     width: 100%;

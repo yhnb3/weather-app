@@ -1,4 +1,8 @@
 import { Glasses, Humidity, Wind } from 'assets/svgs'
+import { useRecoilValue } from 'recoil'
+import cx from 'classnames'
+
+import { themeState } from 'states/theme'
 import styles from './etcInfo.module.scss'
 
 interface IProps {
@@ -8,6 +12,7 @@ interface IProps {
 }
 
 const EtcInfo = ({ uvi, wind, humidity }: IProps) => {
+  const theme = useRecoilValue(themeState)
   const uviString = () => {
     const value = Math.floor(uvi)
     if (value >= 11) return `위험(${value})`
@@ -17,7 +22,7 @@ const EtcInfo = ({ uvi, wind, humidity }: IProps) => {
     return `낮음(${value})`
   }
   return (
-    <div className={styles.etcInfoContainer}>
+    <div className={cx(styles.etcInfoContainer, { [styles.isDark]: theme === 'dark' })}>
       <div className={styles.infoItem}>
         <Glasses className={styles.glassIcon} />
         <div className={styles.type}>자외선지수</div>

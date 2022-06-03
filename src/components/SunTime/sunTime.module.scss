@@ -11,6 +11,10 @@
   background-color: colors.$SKYBLUE_SECONDARY;
   border-radius: 15px;
 
+  &.isDark {
+    background-color: colors.$GRAY2;
+  }
+
   .itemContainer {
     display: flex;
     flex-direction: column;

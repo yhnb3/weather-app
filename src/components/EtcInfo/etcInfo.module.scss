@@ -7,6 +7,10 @@
   background-color: colors.$SKYBLUE_SECONDARY;
   border-radius: 15px;
 
+  &.isDark {
+    background-color: colors.$GRAY2;
+  }
+
   .infoItem {
     display: flex;
     flex: 1;

@@ -10,9 +10,7 @@
     &::after {
       content: '';
     }
-  }
 
-  &.notIsBefore {
     &::before {
       content: '';
     }
@@ -38,5 +36,31 @@
     padding: 15px 0;
     pointer-events: none;
     content: linear-gradient(to left, transparent, colors.$SKYBLUE_SECONDARY);
+  }
+
+  &.isDark {
+    background-color: colors.$GRAY2;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 15px;
+      width: 20px;
+      height: 100%;
+      padding: 15px 0;
+      pointer-events: none;
+      content: linear-gradient(to left, transparent, colors.$GRAY2);
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      width: 20px;
+      height: 100%;
+      padding: 15px 0;
+      pointer-events: none;
+      content: linear-gradient(to right, transparent, colors.$GRAY2);
+    }
   }
 }

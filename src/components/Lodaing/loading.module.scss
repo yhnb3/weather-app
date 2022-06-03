@@ -15,6 +15,10 @@
   &.isManage {
     background-color: colors.$BLACK;
   }
+
+  &.isDark {
+    background-color: colors.$BLACK;
+  }
 }
 
 .loaderSvg {

@@ -1,12 +1,25 @@
 import { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import styles from './routes.module.scss'
+import { useMount } from 'react-use'
+import { useSetRecoilState } from 'recoil'
+import dayjs from 'dayjs'
 
+import styles from './routes.module.scss'
 import Weather from './Weather'
 import Manage from './Manage'
 import Loading from 'components/Lodaing'
 
+import { themeState } from 'states/theme'
+
 const App = () => {
+  const setTheme = useSetRecoilState(themeState)
+  useMount(() => {
+    if (Number(dayjs(Date.now()).format('H')) >= 7 && Number(dayjs(Date.now()).format('H')) >= 19) {
+      setTheme('light')
+    } else {
+      setTheme('dark')
+    }
+  })
   return (
     <div className={styles.appWrapper}>
       <Routes>

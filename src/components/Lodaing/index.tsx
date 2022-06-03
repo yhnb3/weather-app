@@ -1,5 +1,8 @@
-import styles from './loading.module.scss'
 import cx from 'classnames'
+import { useRecoilValue } from 'recoil'
+
+import { themeState } from 'states/theme'
+import styles from './loading.module.scss'
 
 interface IProps {
   size?: number
@@ -7,8 +10,10 @@ interface IProps {
 }
 
 const Loading = ({ size = 1, isManage }: IProps) => {
+  const theme = useRecoilValue(themeState)
+  const isDark = theme === 'dark'
   return (
-    <div className={cx(styles.loadingContainer, { [styles.isManage]: isManage })}>
+    <div className={cx(styles.loadingContainer, { [styles.isManage]: isManage }, { [styles.isDark]: isDark })}>
       <svg className={styles.svgContainer} height={`${100 * size}`} width={`${100 * size}`} viewBox='0 0 100 100'>
         <circle
           className={cx(styles.loaderSvg, styles.animate)}

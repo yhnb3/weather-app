@@ -1,9 +1,9 @@
+import { useMemo } from 'react'
 import dayjs from 'dayjs'
-import styles from './dailyWeather.module.scss'
 
+import styles from './dailyWeather.module.scss'
 import getDay from 'utils/getDay'
 import { IDaily } from 'types/weather.d'
-import { useMemo } from 'react'
 import { EmptyWaterDrop, HalfWaterDrop, WaterDrop } from 'assets/svgs'
 
 interface IProps {
