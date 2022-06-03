@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useQuery } from 'react-query'
-import { getLocation } from 'services/location'
+import { useState } from 'react'
 import EditMode from './EditMode'
 
 import Header from './Header'
@@ -11,15 +9,6 @@ const Manage = () => {
   const [isEdit, setIsEdit] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const [searchValue, setSearchValue] = useState('')
-
-  const { data, isLoading } = useQuery(['locationData', searchValue], () => getLocation(searchValue), {
-    refetchOnWindowFocus: false,
-    cacheTime: Infinity,
-    enabled: !!searchValue.trim(),
-    onSuccess: (location) => {
-      console.log(location)
-    },
-  })
 
   return (
     <div className={styles.pageContainer}>
@@ -32,7 +21,7 @@ const Manage = () => {
           setSearchValue={setSearchValue}
         />
       </header>
-      <main>{isEdit ? <EditMode /> : <ListMode />}</main>
+      <main>{isEdit ? <EditMode searchValue={searchValue} setIsEdit={setIsEdit} /> : <ListMode />}</main>
     </div>
   )
 }

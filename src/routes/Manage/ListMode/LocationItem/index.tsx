@@ -1,11 +1,14 @@
+import { useTempQuery } from 'hooks/useTempQuery'
 import { ILocationData } from 'types/location'
 import styles from './locationItem.module.scss'
 
 interface IProps {
   data: ILocationData
+  idx: number
 }
 
-const LocationItem = ({ data }: IProps) => {
+const LocationItem = ({ data, idx }: IProps) => {
+  useTempQuery({ lat: data.lat, lon: data.lon, idx })
   return (
     <div className={styles.locationItem}>
       <div className={styles.left}>{data.name}</div>

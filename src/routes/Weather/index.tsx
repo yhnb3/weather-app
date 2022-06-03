@@ -28,19 +28,22 @@ const Weather = () => {
   return (
     <div className={styles.pageContainer}>
       <div className={cx(styles.weaterContainer, { [styles.isAside]: isAside })}>
-        <header>
-          <CurrentWeather currentData={currentData} timePerData={timePerData} name={name} />
-        </header>
-        <main>
-          <HourlyWeather timePerData={timePerData} />
-          <DailyWeather timePerData={timePerData} />
-          <SunTime sunRise={currentData.sys.sunrise} sunSet={currentData.sys.sunset} />
-          <EtcInfo
-            uvi={timePerData.daily[0].uvi}
-            humidity={timePerData.daily[0].humidity}
-            wind={timePerData.daily[0].wind_speed}
-          />
-        </main>
+        <div className={cx(styles.outerContainer, { [styles.isAside]: isAside })}>
+          <header>
+            <CurrentWeather currentData={currentData} timePerData={timePerData} name={name} />
+          </header>
+          <main>
+            <HourlyWeather timePerData={timePerData} />
+            <DailyWeather timePerData={timePerData} />
+            <SunTime sunRise={currentData.sys.sunrise} sunSet={currentData.sys.sunset} />
+            <EtcInfo
+              uvi={timePerData.daily[0].uvi}
+              humidity={timePerData.daily[0].humidity}
+              wind={timePerData.daily[0].wind_speed}
+            />
+          </main>
+        </div>
+
         <aside className={cx({ [styles.isAside]: isAside })}>
           <Aside />
         </aside>

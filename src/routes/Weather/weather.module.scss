@@ -16,6 +16,12 @@
     height: 100%;
     transition: transform ease-out 0.4s;
 
+    .outerContainer {
+      &.isAside {
+        opacity: 0.2;
+      }
+    }
+
     &.isAside {
       transform: translate(300px, 0);
     }

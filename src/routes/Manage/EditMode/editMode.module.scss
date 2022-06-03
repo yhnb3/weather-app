@@ -1,0 +1,15 @@
+@use '/src/styles/constants/colors';
+
+.editModeContainer {
+  padding: 10px 0;
+
+  .button {
+    width: 100%;
+    height: 70px;
+    padding: 15px 20px;
+    margin-top: 10px;
+    color: colors.$WHITE;
+    background-color: colors.$GRAY2;
+    border-radius: 20px;
+  }
+}

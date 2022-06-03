@@ -3,7 +3,7 @@
 .hourContainer {
   position: relative;
   padding: 15px;
-  background-color: colors.$SKYBLUE_SECONDATY;
+  background-color: colors.$SKYBLUE_SECONDARY;
   border-radius: 15px;
 
   &.notIsAfter {
@@ -26,7 +26,7 @@
     height: 100%;
     padding: 15px 0;
     pointer-events: none;
-    content: linear-gradient(to right, transparent, colors.$SKYBLUE_SECONDATY);
+    content: linear-gradient(to right, transparent, colors.$SKYBLUE_SECONDARY);
   }
 
   &::before {
@@ -37,6 +37,6 @@
     height: 100%;
     padding: 15px 0;
     pointer-events: none;
-    content: linear-gradient(to left, transparent, colors.$SKYBLUE_SECONDATY);
+    content: linear-gradient(to left, transparent, colors.$SKYBLUE_SECONDARY);
   }
 }
