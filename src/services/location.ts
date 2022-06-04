@@ -1,7 +1,7 @@
 import { axios } from 'hooks/worker'
 import { ILocationRes } from 'types/location'
 
-const PROXY = window.location.hostname === 'localhost' ? '' : 'https://naveropenapi.apigw.ntruss.com'
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy'
 
 const GEOCODING_BASE_URL = '/map-geocode/v2/geocode'
 

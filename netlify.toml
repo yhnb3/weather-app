@@ -1,3 +1,9 @@
+[[redirects]]
+from = "/proxy/*"
+  to = 'https://naveropenapi.apigw.ntruss.com'  
+  status = 200
+  force = true
+
 [[headers]]
    for = "/*"
    [headers.values]
