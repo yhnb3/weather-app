@@ -10,16 +10,18 @@ const ListMode = () => {
       <div className={styles.locationTitle}>즐겨찾는 지역</div>
       {locationData.length > 0 && <LocationItem data={locationData[0]} idx={0} />}
       <div className={styles.locationTitle}>다른 지역</div>
-      <ul>
-        {locationData.slice(1).map((location, idx) => {
-          const key = `location-${idx}`
-          return (
-            <li key={key}>
-              <LocationItem data={location} idx={idx + 1} />
-            </li>
-          )
-        })}
-      </ul>
+      <div className={styles.listContainer}>
+        <ul>
+          {locationData.slice(1).map((location, idx) => {
+            const key = `location-${idx}`
+            return (
+              <li key={key}>
+                <LocationItem data={location} idx={idx + 1} />
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </>
   )
 }

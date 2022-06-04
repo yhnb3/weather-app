@@ -16,7 +16,7 @@ const EditMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
     staleTime: Infinity,
     cacheTime: Infinity,
     enabled: !!searchValue.trim(),
-    suspense: false,
+    suspense: true,
   })
   const searchResult = useMemo(() => {
     if (!data) return null

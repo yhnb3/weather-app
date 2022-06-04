@@ -1,7 +1,9 @@
 @use '/src/styles/constants/colors';
 
 .editModeContainer {
+  height: 100%;
   padding: 10px 0;
+  overflow: auto;
 
   .button {
     width: 100%;

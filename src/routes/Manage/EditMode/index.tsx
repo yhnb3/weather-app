@@ -1,6 +1,6 @@
 import { TrashCan } from 'assets/svgs'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { locationState } from 'states/location'
 import LocationItem from '../LocationItem'
 
@@ -27,16 +27,19 @@ const EditMode = ({ setIsEdit }: IProps) => {
       <div className={styles.locationTitle}>즐겨찾는 지역</div>
       {locationData.length > 0 && <LocationItem data={locationData[0]} idx={0} isEdit setDeleteData={setDeleteData} />}
       <div className={styles.locationTitle}>다른 지역</div>
-      <ul>
-        {locationData.slice(1).map((location, idx) => {
-          const key = `location-${idx}`
-          return (
-            <li key={key}>
-              <LocationItem data={location} idx={idx + 1} isEdit setDeleteData={setDeleteData} />
-            </li>
-          )
-        })}
-      </ul>
+      <div className={styles.locationList}>
+        <ul>
+          {locationData.slice(1).map((location, idx) => {
+            const key = `location-${idx}`
+            return (
+              <li key={key}>
+                <LocationItem data={location} idx={idx + 1} isEdit setDeleteData={setDeleteData} />
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+
       <div className={styles.buttonBox}>
         <button type='button' onClick={handleDeleteClick}>
           <TrashCan className={styles.icon} />
