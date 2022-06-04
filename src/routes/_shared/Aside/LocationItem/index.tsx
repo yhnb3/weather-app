@@ -36,7 +36,7 @@ const LocationItem = ({ lat, lon, idx }: IProps) => {
         <div className={styles.locationTemp}>
           <img
             className={styles.tempImg}
-            src={`http://openweathermap.org/img/wn/${currentData?.weather[0].icon}@2x.png`}
+            src={`https://openweathermap.org/img/wn/${currentData?.weather[0].icon}@2x.png`}
             alt={currentData?.weather[0].description}
           />
           <div className={styles.temp}>{Math.round(Number(currentData?.main.temp))}° </div>
