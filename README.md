@@ -43,15 +43,7 @@ npm start
 ├─assets
 │  └─svgs
 ├─components
-│  ├─CurrentWeather
-│  ├─DailyWeather
-│  ├─EtcInfo
-│  ├─HourlyWeather
-│  │  └─HourList
-│  │      ├─HourTempItem
-│  │      └─HumidityItem
-│  ├─Lodaing
-│  └─SunTime
+│  └─Loading
 ├─hooks
 │  └─worker
 ├─routes
@@ -62,6 +54,14 @@ npm start
 │  │  ├─ListMode
 │  │  └─LocationItem
 │  ├─Weather
+│  │  ├─CurrentWeather
+│  │  ├─DailyWeather
+│  │  ├─EtcInfo
+│  │  ├─HourlyWeather
+│  │  │  └─HourList
+│  │  │      ├─HourTempItem
+│  │  │      └─HumidityItem
+│  │  └─SunTime
 │  └─_shared
 │      └─Aside
 │          └─LocationItem
