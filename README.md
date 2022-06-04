@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# 날씨 앱 
+## [배포페이지](https://thisisweather.netlify.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 과제 설명
+### 개요
+openweathermap API과 네이버 geocoding을 이용한 날씨 앱
+### 실행 방법
+```
+root위치에 .env 파일 생성 후   
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+REACT_APP_WEATHER_APP_ID=당신의 앱 아이디  저장
+```
+```
+// 실행
+npm i
+npm start
+```
+### 폴더 구조
+```
+├─assets
+│  └─svgs
+├─components
+│  ├─CurrentWeather
+│  ├─DailyWeather
+│  ├─EtcInfo
+│  ├─HourlyWeather
+│  │  └─HourList
+│  │      ├─HourTempItem
+│  │      └─HumidityItem
+│  ├─Lodaing
+│  └─SunTime
+├─hooks
+│  └─worker
+├─routes
+│  ├─Manage
+│  │  ├─AddMode
+│  │  ├─EditMode
+│  │  ├─Header
+│  │  ├─ListMode
+│  │  └─LocationItem
+│  ├─Weather
+│  └─_shared
+│      └─Aside
+│          └─LocationItem
+├─services
+├─states
+├─styles
+│  ├─base
+│  ├─constants
+│  └─mixins
+├─types
+└─utils
+```
+### Skills
+- React
+- Typescript
+- React Query
+- Recoil
+- Sass
+### Libraries
+- classnames
+  Scss를 위한 클래스 네임 컨트롤을 위해 사용.
+- react-use
+  useMount, useClickAway와 같은 훅을 편리하게 사용하기 위해 사용.
+- store
+  localStorage를 편히 이용하기 위해 사용.
+- dayjs
+  날짜를 편히 포맷팅하여 사용하기 위해 사용.
