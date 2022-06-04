@@ -1,15 +1,27 @@
 @use '/src/styles/constants/colors';
 
-.editModeContainer {
-  padding: 10px 0;
+.locationTitle {
+  padding: 5px 20px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: colors.$GRAYA;
+}
 
-  .button {
+.buttonBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
     width: 100%;
-    height: 70px;
-    padding: 15px 20px;
-    margin-top: 10px;
+    height: 100px;
     color: colors.$WHITE;
-    background-color: colors.$GRAY2;
-    border-radius: 20px;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      fill: colors.$WHITE;
+    }
   }
 }

@@ -11,9 +11,34 @@
   border-radius: 20px;
 
   .left {
+    display: flex;
     height: 40px;
     line-height: 40px;
     text-align: center;
+
+    .inputContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+
+      input[type='checkbox'] {
+        width: 20px;
+        height: 20px;
+        border: 1px solid colors.$GRAYA;
+        border-radius: 100%;
+      }
+
+      input[type='checkbox']:checked {
+        width: 20px;
+        height: 20px;
+        background-color: colors.$WHITE;
+        border: none;
+        border: 1px solid colors.$GRAYA;
+        border-radius: 100%;
+      }
+    }
   }
 
   .right {

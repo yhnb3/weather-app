@@ -13,12 +13,11 @@ import { RecoilRoot } from 'recoil'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnMount: false,
-      staleTime: 60 * 60 * 1000,
-      refetchOnReconnect: false,
+      refetchOnMount: true,
+      cacheTime: 60 * 60 * 1000,
+      refetchOnReconnect: true,
       refetchOnWindowFocus: false,
       suspense: true,
-      refetchInterval: 60 * 60 * 1000,
     },
   },
 })

@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import EditMode from './EditMode'
 
 import Header from './Header'
-import ListMode from './ListMode'
 import styles from './manage.module.scss'
+import ModeContainer from './ModeContainer'
 
 const Manage = () => {
+  const [isAdd, setIsAdd] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const [searchValue, setSearchValue] = useState('')
@@ -14,14 +14,24 @@ const Manage = () => {
     <div className={styles.pageContainer}>
       <header>
         <Header
-          isEdit={isEdit}
+          isAdd={isAdd}
           inputValue={inputValue}
           setInputValue={setInputValue}
-          setIsEdit={setIsEdit}
+          setIsAdd={setIsAdd}
           setSearchValue={setSearchValue}
+          setIsEdit={setIsEdit}
         />
       </header>
-      <main>{isEdit ? <EditMode searchValue={searchValue} setIsEdit={setIsEdit} /> : <ListMode />}</main>
+      <main>
+        <ModeContainer
+          isAdd={isAdd}
+          isEdit={isEdit}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          setIsAdd={setIsAdd}
+          setIsEdit={setIsEdit}
+        />
+      </main>
     </div>
   )
 }

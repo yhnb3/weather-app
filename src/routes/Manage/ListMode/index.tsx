@@ -1,4 +1,4 @@
-import LocationItem from './LocationItem'
+import LocationItem from '../LocationItem'
 import styles from './listMode.module.scss'
 import { useRecoilValue } from 'recoil'
 import { locationState } from 'states/location'
@@ -8,7 +8,7 @@ const ListMode = () => {
   return (
     <>
       <div className={styles.locationTitle}>즐겨찾는 지역</div>
-      <LocationItem data={locationData[0]} idx={0} />
+      {locationData.length > 0 && <LocationItem data={locationData[0]} idx={0} />}
       <div className={styles.locationTitle}>다른 지역</div>
       <ul>
         {locationData.slice(1).map((location, idx) => {

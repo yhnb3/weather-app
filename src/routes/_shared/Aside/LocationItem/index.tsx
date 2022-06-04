@@ -1,6 +1,7 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { useNavigate } from 'react-router-dom'
 import cx from 'classnames'
+import store from 'store'
 
 import { locationState } from 'states/location'
 import { useTempQuery } from 'hooks/useTempQuery'
@@ -17,9 +18,11 @@ const LocationItem = ({ lat, lon, idx }: IProps) => {
   const locationData = useRecoilValue(locationState)
   const setIsAside = useSetRecoilState(asideOpenState)
   const navigate = useNavigate()
-  useTempQuery({ lat, lon, idx })
+  const { currentData } = useTempQuery({ lat, lon })
   const data = locationData[idx]
   const isBold = !idx
+
+  store.set('locationData', locationData)
 
   const handleLinkClick = () => {
     setIsAside(false)
@@ -33,10 +36,10 @@ const LocationItem = ({ lat, lon, idx }: IProps) => {
         <div className={styles.locationTemp}>
           <img
             className={styles.tempImg}
-            src={`http://openweathermap.org/img/wn/${data.currentData?.weather[0].icon}@2x.png`}
-            alt={data.currentData?.weather[0].description}
+            src={`http://openweathermap.org/img/wn/${currentData?.weather[0].icon}@2x.png`}
+            alt={currentData?.weather[0].description}
           />
-          <div className={styles.temp}>{Math.round(Number(data.currentData?.main.temp))}° </div>
+          <div className={styles.temp}>{Math.round(Number(currentData?.main.temp))}° </div>
         </div>
       </div>
     </li>

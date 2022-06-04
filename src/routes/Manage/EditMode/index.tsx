@@ -1,40 +1,49 @@
-import { Dispatch, SetStateAction, useMemo } from 'react'
-import { useQuery } from 'react-query'
-import { getLocation } from 'services/location'
+import { TrashCan } from 'assets/svgs'
+import { Dispatch, SetStateAction, useState } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { locationState } from 'states/location'
+import LocationItem from '../LocationItem'
+
 import styles from './editMode.module.scss'
-import ResultItem from './ResultItem'
 
 interface IProps {
-  searchValue: string
   setIsEdit: Dispatch<SetStateAction<boolean>>
 }
-const EditMode = ({ searchValue, setIsEdit }: IProps) => {
-  const { data, isLoading } = useQuery(['locationData', searchValue], () => getLocation(searchValue), {
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-    cacheTime: Infinity,
-    enabled: !!searchValue.trim(),
-    suspense: false,
-  })
-  const searchResult = useMemo(() => {
-    if (!data) return null
-    if (data.addresses.length === 0) return <p>검색결과가 없습니다.</p>
-    return (
+
+const EditMode = ({ setIsEdit }: IProps) => {
+  const [locationData, setLocationData] = useRecoilState(locationState)
+  const [deleteData, setDeleteData] = useState([
+    ...locationData.map(() => {
+      return { isChecked: false }
+    }),
+  ])
+
+  const handleDeleteClick = () => {
+    setLocationData((prev) => [...prev.filter((_location, idx) => !deleteData[idx].isChecked)])
+    setIsEdit(false)
+  }
+  return (
+    <>
+      <div className={styles.locationTitle}>즐겨찾는 지역</div>
+      {locationData.length > 0 && <LocationItem data={locationData[0]} idx={0} isEdit setDeleteData={setDeleteData} />}
+      <div className={styles.locationTitle}>다른 지역</div>
       <ul>
-        {data.addresses.map((result, idx) => {
-          const key = `location-result-${idx}`
+        {locationData.slice(1).map((location, idx) => {
+          const key = `location-${idx}`
           return (
             <li key={key}>
-              <ResultItem data={result} setIsEdit={setIsEdit} />
+              <LocationItem data={location} idx={idx + 1} isEdit setDeleteData={setDeleteData} />
             </li>
           )
         })}
       </ul>
-    )
-  }, [data, setIsEdit])
-
-  if (isLoading) return <p>로딩중...</p>
-  return <div className={styles.editModeContainer}>{searchResult}</div>
+      <div className={styles.buttonBox}>
+        <button type='button' onClick={handleDeleteClick}>
+          <TrashCan className={styles.icon} />
+        </button>
+      </div>
+    </>
+  )
 }
 
 export default EditMode
