@@ -7,13 +7,16 @@ import styles from './currentWeather.module.scss'
 import { Hamburger } from 'assets/svgs'
 import { asideOpenState } from 'states/aside'
 import { themeState } from 'states/theme'
+import getDay from 'utils/getDay'
 
 interface IProps {
   currentData: ICurrentWeather | undefined
   timePerData: ITimePerWeather | undefined
   name: string
+  opacity: number
+  height: number
 }
-const CurrentWeather = ({ currentData, timePerData, name }: IProps) => {
+const CurrentWeather = ({ currentData, timePerData, name, opacity, height }: IProps) => {
   const setIsAside = useSetRecoilState(asideOpenState)
   const theme = useRecoilValue(themeState)
   const isDark = theme === 'dark'
@@ -29,9 +32,14 @@ const CurrentWeather = ({ currentData, timePerData, name }: IProps) => {
 
   return (
     <div className={cx(styles.current, { [styles.isDark]: isDark })}>
-      <button type='button' onClick={handleHamburgerClick}>
-        <Hamburger className={styles.hamburgerIcon} />
-      </button>
+      <div className={styles.currentHeader}>
+        <button type='button' onClick={handleHamburgerClick}>
+          <Hamburger className={styles.hamburgerIcon} />
+        </button>
+        <div className={styles.headerTitle} style={{ opacity: `${1 - opacity}` }}>
+          {name}
+        </div>
+      </div>
 
       <div className={styles.currentMain}>
         <div className={styles.currentMainLeft}>
@@ -47,12 +55,24 @@ const CurrentWeather = ({ currentData, timePerData, name }: IProps) => {
           />
         </div>
       </div>
-      <p className={styles.city}>{name}</p>
-      <p>
-        {Math.round(dailyData[0].temp.max)}° / {Math.round(timePerData.daily[0].temp.min)}°{' '}
-        <span className={styles.feelsLike}>체감온도 {Math.round(currentData.main.feels_like)}°</span>
-      </p>
-      <p className={styles.updateTime}>
+      <div className={styles.city} style={{ opacity: `${opacity}` }}>
+        {name}
+      </div>
+      <div
+        className={styles.day}
+        style={{ transform: `translate(${1.25 * (220 - height)}px, -${0.85 * (220 - height)}px)` }}
+      >
+        {getDay(Number(dayjs.unix(currentData.dt).format('d')))}요일
+      </div>
+      <div className={styles.tempBox}>
+        <div style={{ transform: `translate(${1.25 * (220 - height)}px, -${0.9 * (220 - height)}px)` }}>
+          {Math.round(dailyData[0].temp.max)}° / {Math.round(timePerData.daily[0].temp.min)}°{' '}
+        </div>
+        <div className={styles.feelsLike} style={{ opacity: `${opacity}` }}>
+          체감온도 {Math.round(currentData.main.feels_like)}°
+        </div>
+      </div>
+      <p className={styles.updateTime} style={{ opacity: `${opacity}` }}>
         Updated at {ampm} {dayjs.unix(currentData.dt).format('h:mm')}{' '}
       </p>
     </div>

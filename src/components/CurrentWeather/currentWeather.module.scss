@@ -10,11 +10,23 @@
     background-color: colors.$BLACK;
   }
 
-  .hamburgerIcon {
-    width: 25px;
-    height: 25px;
-    padding: 5px;
-    fill: colors.$WHITE;
+  .currentHeader {
+    display: flex;
+    height: 30px;
+
+    .hamburgerIcon {
+      width: 25px;
+      height: 25px;
+      padding: 5px;
+      fill: colors.$WHITE;
+    }
+
+    .headerTitle {
+      height: 30px;
+      margin-left: 10px;
+      line-height: 30px;
+      text-align: center;
+    }
   }
 
   &Main {
@@ -48,22 +60,24 @@
   }
 
   .updateTime {
+    margin-top: 10px;
+    font-size: 13px;
     text-align: right;
   }
 
-  p {
+  .day {
+    margin-top: 10px;
     font-size: 13px;
-    font-weight: 600;
+  }
 
-    + p {
+  .tempBox {
+    display: flex;
+    margin-top: 10px;
+    font-size: 13px;
+
+    + div {
       margin-top: 10px;
       margin-left: 5px;
-    }
-
-    &.city {
-      margin: 10px 0 10px 5px;
-      font-size: 25px;
-      font-weight: 500;
     }
 
     .feelsLike {
