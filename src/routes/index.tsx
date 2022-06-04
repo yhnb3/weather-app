@@ -8,7 +8,7 @@ import store from 'store'
 import styles from './routes.module.scss'
 import Weather from './Weather'
 import Manage from './Manage'
-import Loading from 'components/Lodaing'
+import Loading from 'components/Loading'
 
 import { themeState } from 'states/theme'
 import { locationState } from 'states/location'

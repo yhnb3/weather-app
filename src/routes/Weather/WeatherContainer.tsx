@@ -5,12 +5,16 @@ import cx from 'classnames'
 import store from 'store'
 
 import { locationState } from 'states/location'
-import { CurrentWeather, HourlyWeather, DailyWeather, EtcInfo } from 'components'
 import { useTempQuery } from 'hooks/useTempQuery'
+
+import CurrentWeather from './CurrentWeather'
+import HourlyWeather from './HourlyWeather'
+import DailyWeather from './DailyWeather'
+import EtcInfo from './EtcInfo'
+import SunTime from './SunTime'
 
 import styles from './weather.module.scss'
 import Aside from 'routes/_shared/Aside'
-import SunTime from 'components/SunTime'
 import { asideOpenState } from 'states/aside'
 
 const WeatherContainer = () => {
