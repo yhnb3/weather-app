@@ -1,17 +1,11 @@
 import { axios } from 'hooks/worker'
 import { ILocationRes } from 'types/location'
 
-const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy'
-
-const GEOCODING_BASE_URL = '/map-geocode/v2/geocode'
+const GEOCODING_BASE_URL = 'https://weather-app-kw.herokuapp.com/api/data/api/data'
 
 export const getLocation = (params: string) =>
   axios
-    .get<ILocationRes>(`${PROXY}${GEOCODING_BASE_URL}`, {
-      headers: {
-        'X-NCP-APIGW-API-KEY': String(process.env.REACT_APP_NAVER_SECRET_KEY),
-        'X-NCP-APIGW-API-KEY-ID': String(process.env.REACT_APP_NAVER_API_KEY),
-      },
+    .get<ILocationRes>(`${GEOCODING_BASE_URL}`, {
       params: {
         query: params,
       },
