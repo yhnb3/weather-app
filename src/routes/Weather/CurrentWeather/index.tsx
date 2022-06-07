@@ -4,7 +4,7 @@ import cx from 'classnames'
 
 import { ICurrentWeather, ITimePerWeather } from 'types/weather.d'
 import styles from './currentWeather.module.scss'
-import { Hamburger } from 'assets/svgs'
+import { HamburgerIcon } from 'assets/svgs'
 import { asideOpenState } from 'states/aside'
 import { themeState } from 'states/theme'
 import getDay from 'utils/getDay'
@@ -34,7 +34,7 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height }: IPr
     <div className={cx(styles.current, { [styles.isDark]: isDark })}>
       <div className={styles.currentHeader}>
         <button type='button' onClick={handleHamburgerClick}>
-          <Hamburger className={styles.hamburgerIcon} />
+          <HamburgerIcon className={styles.hamburgerIcon} />
         </button>
         <div className={styles.headerTitle} style={{ opacity: `${1 - opacity}` }}>
           {name}

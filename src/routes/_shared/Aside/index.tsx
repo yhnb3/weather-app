@@ -1,4 +1,4 @@
-import { Location, Star } from 'assets/svgs'
+import { LocationIcon, StarIcon } from 'assets/svgs'
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useClickAway } from 'react-use'
@@ -29,7 +29,7 @@ const Aside = () => {
     <div ref={asideRef} className={styles.asideContainer}>
       <div className={styles.locationContainer}>
         <div className={styles.title}>
-          <Star className={styles.icon} />
+          <StarIcon className={styles.icon} />
           <div>즐겨찾는 지역</div>
         </div>
         <div className={styles.locationList}>
@@ -38,7 +38,7 @@ const Aside = () => {
       </div>
       <div className={styles.locationContainer}>
         <div className={styles.title}>
-          <Location className={styles.icon} />
+          <LocationIcon className={styles.icon} />
           <div>다른 지역</div>
         </div>
         <div className={styles.locationList}>

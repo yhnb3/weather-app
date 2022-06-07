@@ -1,4 +1,4 @@
-import { AngleLeft, Menu, Plus } from 'assets/svgs'
+import { AngleLeftIcon, MenuIcon, PlusIcon } from 'assets/svgs'
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUnmount } from 'react-use'
@@ -58,7 +58,7 @@ const Header = ({ isAdd, inputValue, setInputValue, setIsAdd, setSearchValue, se
     <div className={styles.headerContainer}>
       <div className={styles.headerItem}>
         <button type='button' onClick={handleBackClick} disabled={locationData.length === 0}>
-          <AngleLeft className={styles.angleIcon} />
+          <AngleLeftIcon className={styles.angleIcon} />
         </button>
         {isAdd ? (
           <form onSubmit={handleSubmit}>
@@ -76,10 +76,10 @@ const Header = ({ isAdd, inputValue, setInputValue, setIsAdd, setSearchValue, se
       </div>
       <div className={styles.headerItem}>
         <button type='button' onClick={handlePlusClick}>
-          <Plus className={styles.plusIcon} />
+          <PlusIcon className={styles.plusIcon} />
         </button>
         <button type='button' onClick={handleEditClick}>
-          <Menu className={styles.editIcon} />
+          <MenuIcon className={styles.editIcon} />
         </button>
       </div>
     </div>

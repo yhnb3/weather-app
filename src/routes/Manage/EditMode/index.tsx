@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import store from 'store'
 
-import { TrashCan } from 'assets/svgs'
+import { TrashCanIcon } from 'assets/svgs'
 import { locationState } from 'states/location'
 import LocationItem from '../LocationItem'
 
@@ -48,7 +48,7 @@ const EditMode = ({ setIsEdit }: IProps) => {
 
       <div className={styles.buttonBox}>
         <button type='button' onClick={handleDeleteClick}>
-          <TrashCan className={styles.icon} />
+          <TrashCanIcon className={styles.icon} />
         </button>
       </div>
     </>

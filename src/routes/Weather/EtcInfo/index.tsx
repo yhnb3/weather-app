@@ -1,4 +1,4 @@
-import { Glasses, Humidity, Wind } from 'assets/svgs'
+import { GlassesIcon, HumidityIcon, WindIcon } from 'assets/svgs'
 import { useRecoilValue } from 'recoil'
 import cx from 'classnames'
 
@@ -24,17 +24,17 @@ const EtcInfo = ({ uvi, wind, humidity }: IProps) => {
   return (
     <div className={cx(styles.etcInfoContainer, { [styles.isDark]: theme === 'dark' })}>
       <div className={styles.infoItem}>
-        <Glasses className={styles.glassIcon} />
+        <GlassesIcon className={styles.glassIcon} />
         <div className={styles.type}>자외선지수</div>
         <div className={styles.value}>{uviString()}</div>
       </div>
       <div className={styles.infoItem}>
-        <Wind className={styles.windIcon} />
+        <WindIcon className={styles.windIcon} />
         <div className={styles.type}>바람</div>
         <div className={styles.value}>{Math.floor(wind)}m/s</div>
       </div>
       <div className={styles.infoItem}>
-        <Humidity className={styles.humidityIcon} />
+        <HumidityIcon className={styles.humidityIcon} />
         <div className={styles.type}>습도</div>
         <div className={styles.value}>{Math.floor(humidity)}%</div>
       </div>

@@ -17,6 +17,7 @@ const App = () => {
   const setTheme = useSetRecoilState(themeState)
   const [locationData, setLocationData] = useRecoilState(locationState)
   const localLocationData = store.get('locationData') || []
+
   useMount(() => {
     if (Number(dayjs(Date.now()).format('H')) >= 7 && Number(dayjs(Date.now()).format('H')) <= 19) {
       setTheme('light')
@@ -25,6 +26,7 @@ const App = () => {
     }
     setLocationData(localLocationData)
   })
+
   const home = useMemo(() => {
     if (locationData.length > 0)
       return (

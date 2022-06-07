@@ -1,9 +1,9 @@
-import dayjs from 'dayjs'
 import { useRecoilValue } from 'recoil'
 import cx from 'classnames'
+import dayjs from 'dayjs'
 
 import { themeState } from 'states/theme'
-import { Sunrise, Sunset } from 'assets/svgs'
+import { SunriseIcon, SunsetIcon } from 'assets/svgs'
 import styles from './sunTime.module.scss'
 
 interface IProps {
@@ -24,12 +24,12 @@ const SunTime = ({ sunRise, sunSet }: IProps) => {
       <div className={styles.itemContainer}>
         <div className={styles.type}>일출</div>
         <div className={styles.time}>{timeFormat(sunRise)}</div>
-        <Sunrise className={styles.sunriseIcon} />
+        <SunriseIcon className={styles.sunriseIcon} />
       </div>
       <div className={styles.itemContainer}>
         <div className={styles.type}>일몰</div>
         <div className={styles.time}>{timeFormat(sunSet)}</div>
-        <Sunset className={styles.sunsetIcon} />
+        <SunsetIcon className={styles.sunsetIcon} />
       </div>
     </div>
   )

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useMemo } from 'react'
 import { useQuery } from 'react-query'
 import { useUnmount } from 'react-use'
 
-import { Error } from 'assets/svgs'
+import { ErrorIcon } from 'assets/svgs'
 import { getLocation } from 'services/location'
 import styles from './addMode.module.scss'
 import ResultItem from './ResultItem'
@@ -33,7 +33,7 @@ const AddMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
     if (filteredData.length === 0)
       return (
         <div className={styles.noResult}>
-          <Error className={styles.errorIcon} />
+          <ErrorIcon className={styles.errorIcon} />
           <p>검색결과가 없습니다.</p>
         </div>
       )

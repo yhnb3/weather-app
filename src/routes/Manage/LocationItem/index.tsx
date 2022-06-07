@@ -1,10 +1,12 @@
-import { useTempQuery } from 'hooks/useTempQuery'
-import { ILocationData } from 'types/location'
-import store from 'store'
-import styles from './locationItem.module.scss'
-import { useRecoilValue } from 'recoil'
-import { locationState } from 'states/location'
 import { Dispatch, SetStateAction } from 'react'
+import { useRecoilValue } from 'recoil'
+import store from 'store'
+
+import { useTempQuery } from 'hooks/useTempQuery'
+import { locationState } from 'states/location'
+import { ILocationData } from 'types/location'
+
+import styles from './locationItem.module.scss'
 
 interface IProps {
   data: ILocationData
