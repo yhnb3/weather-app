@@ -55,7 +55,13 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height }: IPr
           />
         </div>
       </div>
-      <div className={styles.city} style={{ opacity: `${opacity}` }}>
+      <div
+        className={styles.city}
+        style={{
+          opacity: `${opacity}`,
+          transform: `translate(${220 - height}px, -${220 - height}px)`,
+        }}
+      >
         {name}
       </div>
       <div
@@ -68,11 +74,17 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height }: IPr
         <div style={{ transform: `translate(${1.25 * (220 - height)}px, -${0.9 * (220 - height)}px)` }}>
           {Math.round(dailyData[0].temp.max)}° / {Math.round(timePerData.daily[0].temp.min)}°{' '}
         </div>
-        <div className={styles.feelsLike} style={{ opacity: `${opacity}` }}>
+        <div
+          className={styles.feelsLike}
+          style={{ opacity: `${opacity}`, transform: `translate(${220 - height}px, -${220 - height}px)` }}
+        >
           체감온도 {Math.round(currentData.main.feels_like)}°
         </div>
       </div>
-      <p className={styles.updateTime} style={{ opacity: `${opacity}` }}>
+      <p
+        className={styles.updateTime}
+        style={{ opacity: `${opacity}`, transform: `translate(-${220 - height}px, -${220 - height}px)` }}
+      >
         Updated at {ampm} {dayjs.unix(currentData.dt).format('h:mm')}{' '}
       </p>
     </div>
