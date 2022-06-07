@@ -1,9 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
-import { useRecoilValue } from 'recoil'
-import store from 'store'
 
 import { useTempQuery } from 'hooks/useTempQuery'
-import { locationState } from 'states/location'
 import { ILocationData } from 'types/location'
 
 import styles from './locationItem.module.scss'
@@ -16,9 +13,7 @@ interface IProps {
 }
 
 const LocationItem = ({ data, idx, isEdit = false, setDeleteData }: IProps) => {
-  const locationData = useRecoilValue(locationState)
   const { currentData, timePerData } = useTempQuery({ lat: data.lat, lon: data.lon })
-  store.set('locationData', locationData)
 
   const handleCheck = () => {
     if (setDeleteData) {

@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useSetRecoilState } from 'recoil'
+import store from 'store'
 
 import { locationState } from 'states/location'
 import { ILocationAddress } from 'types/location'
@@ -19,7 +20,12 @@ const ResultItem = ({ data, setIsAdd }: IProps) => {
   }
 
   const handleClick = () => {
-    setLocationData((prev) => [...prev, { name, lat: Number(data.y), lon: Number(data.x) }])
+    setLocationData((prev) => {
+      const newData = [...prev, { name, lat: Number(data.y), lon: Number(data.x) }]
+      store.set('locationData', newData)
+      return newData
+    })
+
     setIsAdd(false)
   }
   return (
