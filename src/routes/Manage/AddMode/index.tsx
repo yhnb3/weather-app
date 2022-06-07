@@ -28,7 +28,7 @@ const AddMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
 
     const filteredData = data.addresses.filter((item) => {
       const targetIdx = locationData.findIndex((location) => location.lon === Number(item.x))
-      return targetIdx === -1 && locationData[targetIdx].lat !== Number(item.y)
+      return targetIdx === -1 || locationData[targetIdx].lat !== Number(item.y)
     })
     if (filteredData.length === 0)
       return (

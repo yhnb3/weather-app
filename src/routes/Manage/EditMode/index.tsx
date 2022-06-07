@@ -1,6 +1,8 @@
-import { TrashCan } from 'assets/svgs'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useRecoilState } from 'recoil'
+import store from 'store'
+
+import { TrashCan } from 'assets/svgs'
 import { locationState } from 'states/location'
 import LocationItem from '../LocationItem'
 
@@ -19,7 +21,11 @@ const EditMode = ({ setIsEdit }: IProps) => {
   ])
 
   const handleDeleteClick = () => {
-    setLocationData((prev) => [...prev.filter((_location, idx) => !deleteData[idx].isChecked)])
+    setLocationData((prev) => {
+      const newData = [...prev.filter((_location, idx) => !deleteData[idx].isChecked)]
+      store.set('locationData', newData)
+      return newData
+    })
     setIsEdit(false)
   }
   return (
