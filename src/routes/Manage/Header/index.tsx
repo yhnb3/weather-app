@@ -1,4 +1,4 @@
-import { AngleLeftIcon, MenuIcon, PlusIcon } from 'assets/svgs'
+import { AngleLeftIcon, ListIcon, MenuIcon, PlusIcon } from 'assets/svgs'
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUnmount } from 'react-use'
@@ -30,7 +30,7 @@ const Header = ({ isAdd, inputValue, setInputValue, setIsAdd, setSearchValue, se
   }
 
   const handlePlusClick = () => {
-    setIsAdd(true)
+    setIsAdd((prev) => !prev)
     setIsEdit(false)
     timeOut = setTimeout(() => {
       if (inputRef.current) {
@@ -76,7 +76,7 @@ const Header = ({ isAdd, inputValue, setInputValue, setIsAdd, setSearchValue, se
       </div>
       <div className={styles.headerItem}>
         <button type='button' onClick={handlePlusClick}>
-          <PlusIcon className={styles.plusIcon} />
+          {isAdd ? <ListIcon className={styles.plusIcon} /> : <PlusIcon className={styles.plusIcon} />}
         </button>
         <button type='button' onClick={handleEditClick}>
           <MenuIcon className={styles.editIcon} />
