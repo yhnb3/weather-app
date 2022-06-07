@@ -6,13 +6,16 @@ import { Error } from 'assets/svgs'
 import { getLocation } from 'services/location'
 import styles from './addMode.module.scss'
 import ResultItem from './ResultItem'
+import { locationState } from 'states/location'
+import { useRecoilValue } from 'recoil'
 
 interface IProps {
   searchValue: string
   setSearchValue: Dispatch<SetStateAction<string>>
   setIsAdd: Dispatch<SetStateAction<boolean>>
 }
-const EditMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
+const AddMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
+  const locationData = useRecoilValue(locationState)
   const { data, isLoading } = useQuery(['locationData', searchValue], () => getLocation(searchValue), {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
@@ -22,7 +25,12 @@ const EditMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
   })
   const searchResult = useMemo(() => {
     if (!data) return null
-    if (data.addresses.length === 0)
+
+    const filteredData = data.addresses.filter((item) => {
+      const targetIdx = locationData.findIndex((location) => location.lon === Number(item.x))
+      return targetIdx === -1 && locationData[targetIdx].lat !== Number(item.y)
+    })
+    if (filteredData.length === 0)
       return (
         <div className={styles.noResult}>
           <Error className={styles.errorIcon} />
@@ -31,7 +39,7 @@ const EditMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
       )
     return (
       <ul>
-        {data.addresses.map((result, idx) => {
+        {filteredData.map((result, idx) => {
           const key = `location-result-${idx}`
           return (
             <li key={key}>
@@ -41,7 +49,7 @@ const EditMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
         })}
       </ul>
     )
-  }, [data, setIsAdd])
+  }, [data, locationData, setIsAdd])
 
   useUnmount(() => {
     setSearchValue('')
@@ -51,4 +59,4 @@ const EditMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
   return <div className={styles.editModeContainer}>{searchResult}</div>
 }
 
-export default EditMode
+export default AddMode
