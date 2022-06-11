@@ -8,6 +8,7 @@ import styles from './addMode.module.scss'
 import ResultItem from './ResultItem'
 import { locationState } from 'states/location'
 import { useRecoilValue } from 'recoil'
+import Loading from './Loading'
 
 interface IProps {
   searchValue: string
@@ -54,7 +55,7 @@ const AddMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
     setSearchValue('')
   })
 
-  if (isLoading) return <p>로딩중...</p>
+  if (isLoading) return <Loading />
   return <div className={styles.editModeContainer}>{searchResult}</div>
 }
 

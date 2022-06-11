@@ -1,11 +1,12 @@
+import cx from 'classnames'
 import { LoadingIndicator } from 'components'
-
 import styles from './loading.module.scss'
 
 const Loading = () => {
+  const isDark = true
   return (
-    <div className={styles.locationItemLoading}>
-      <LoadingIndicator size={0.3} />
+    <div className={cx(styles.loadingContainer, { [styles.isDark]: isDark })}>
+      <LoadingIndicator />
     </div>
   )
 }

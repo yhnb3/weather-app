@@ -16,7 +16,7 @@ import SunTime from './SunTime'
 import styles from './weather.module.scss'
 import Aside from 'routes/_shared/Aside'
 import { asideOpenState } from 'states/aside'
-import { Loading } from 'components'
+import Loading from './Loading'
 import dayjs from 'dayjs'
 
 const WeatherContainer = () => {
@@ -47,7 +47,7 @@ const WeatherContainer = () => {
     setHeight(220 - event.currentTarget.scrollTop >= 120 ? 220 - event.currentTarget.scrollTop : 120)
   }
 
-  if (isLoading) return <Loading isManage={false} />
+  if (isLoading) return <Loading />
   if (!currentData || !timePerData) return null
   return (
     <div className={cx(styles.weaterContainer, { [styles.isAside]: isAside })}>
