@@ -26,7 +26,6 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height, time 
   if (timePerData === undefined) return null
 
   const { daily: dailyData } = timePerData
-  const ampm = dayjs.unix(currentData.dt).format('A') === 'PM' ? '오후' : '오전'
 
   const handleHamburgerClick = () => {
     setIsAside(true)

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useMount } from 'react-use'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import dayjs from 'dayjs'
 import store from 'store'
 
@@ -14,7 +14,7 @@ import { locationState } from 'states/location'
 
 const App = () => {
   const setTheme = useSetRecoilState(themeState)
-  const [locationData, setLocationData] = useRecoilState(locationState)
+  const setLocationData = useSetRecoilState(locationState)
   const localLocationData = store.get('locationData') || []
 
   useMount(() => {
