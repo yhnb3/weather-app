@@ -15,11 +15,13 @@ interface IProps {
   name: string
   opacity: number
   height: number
+  time: string
 }
-const CurrentWeather = ({ currentData, timePerData, name, opacity, height }: IProps) => {
+const CurrentWeather = ({ currentData, timePerData, name, opacity, height, time }: IProps) => {
   const setIsAside = useSetRecoilState(asideOpenState)
   const theme = useRecoilValue(themeState)
   const isDark = theme === 'dark'
+
   if (currentData === undefined) return null
   if (timePerData === undefined) return null
 
@@ -64,12 +66,6 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height }: IPr
       >
         {name}
       </div>
-      <div
-        className={styles.day}
-        style={{ transform: `translate(${1.25 * (220 - height)}px, -${0.85 * (220 - height)}px)` }}
-      >
-        {getDay(Number(dayjs.unix(currentData.dt).format('d')))}요일
-      </div>
       <div className={styles.tempBox}>
         <div style={{ transform: `translate(${1.25 * (220 - height)}px, -${0.9 * (220 - height)}px)` }}>
           {Math.round(dailyData[0].temp.max)}° / {Math.round(timePerData.daily[0].temp.min)}°{' '}
@@ -81,12 +77,12 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height }: IPr
           체감온도 {Math.round(currentData.main.feels_like)}°
         </div>
       </div>
-      <p
-        className={styles.updateTime}
-        style={{ opacity: `${opacity}`, transform: `translate(-${220 - height}px, -${220 - height}px)` }}
+      <div
+        className={styles.day}
+        style={{ transform: `translate(${1.25 * (220 - height)}px, -${0.9 * (220 - height)}px)` }}
       >
-        Updated at {ampm} {dayjs.unix(currentData.dt).format('h:mm')}{' '}
-      </p>
+        {getDay(Number(dayjs.unix(currentData.dt).format('d')))}요일, {time}
+      </div>
     </div>
   )
 }

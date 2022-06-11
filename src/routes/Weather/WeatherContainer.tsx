@@ -1,4 +1,4 @@
-import { useState, UIEvent } from 'react'
+import { useState, UIEvent, useEffect } from 'react'
 import { useRecoilValue } from 'recoil'
 import { useParams } from 'react-router-dom'
 import cx from 'classnames'
@@ -16,6 +16,8 @@ import SunTime from './SunTime'
 import styles from './weather.module.scss'
 import Aside from 'routes/_shared/Aside'
 import { asideOpenState } from 'states/aside'
+import { Loading } from 'components'
+import dayjs from 'dayjs'
 
 const WeatherContainer = () => {
   const { city } = useParams()
@@ -24,18 +26,29 @@ const WeatherContainer = () => {
   const isAside = useRecoilValue(asideOpenState)
   const [height, setHeight] = useState(220)
   const opacity = 1 - (220 - height) / 50 >= 0 ? 1 - (220 - height) / 50 : 0
-
   const { lat, lon, name } = locationData[targetIdx]
-
-  const { currentData, timePerData } = useTempQuery({ lat, lon })
-
-  if (!currentData || !timePerData) return null
-
+  const { isLoading, currentData, timePerData } = useTempQuery({ lat, lon })
+  const [currentTime, setCurrentTime] = useState(dayjs(new Date()).format('HH:mm'))
   store.set('locationData', locationData)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = dayjs(new Date()).format('HH:mm')
+      if (currentTime !== now) {
+        setCurrentTime(now)
+      }
+    }, 1000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [currentTime])
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
     setHeight(220 - event.currentTarget.scrollTop >= 120 ? 220 - event.currentTarget.scrollTop : 120)
   }
+
+  if (isLoading) return <Loading isManage={false} />
+  if (!currentData || !timePerData) return null
   return (
     <div className={cx(styles.weaterContainer, { [styles.isAside]: isAside })}>
       <div className={cx(styles.outerContainer, { [styles.isAside]: isAside })}>
@@ -46,6 +59,7 @@ const WeatherContainer = () => {
             name={name}
             opacity={opacity}
             height={height}
+            time={currentTime}
           />
         </header>
         <main onScroll={handleScroll}>
