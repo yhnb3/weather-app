@@ -21,7 +21,6 @@ const AddMode = ({ searchValue, setIsAdd, setSearchValue }: IProps) => {
     staleTime: Infinity,
     cacheTime: Infinity,
     enabled: !!searchValue.trim(),
-    suspense: true,
   })
   const searchResult = useMemo(() => {
     if (!data) return null

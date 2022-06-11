@@ -4,13 +4,14 @@ import { getWeatherForecastCurrent } from 'services/weather'
 interface IProps {
   lat: number
   lon: number
+  time: string
 }
 
-export const useCurrentTempQuery = ({ lat, lon }: IProps) => {
-  const { data } = useQuery(['currentTemp', lat, lon], () =>
+export const useCurrentTempQuery = ({ lat, lon, time }: IProps) => {
+  const { isLoading, data } = useQuery([`currentTemp-${time}`, lat, lon], () =>
     getWeatherForecastCurrent({ lat, lon }).then((res) => {
       return res.data
     })
   )
-  return { data }
+  return { isLoading, data }
 }

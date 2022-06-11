@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { useCurrentTempQuery } from './useCurrentTempQuery'
 import { useTimePerTempQuery } from './useTimePerTempQuery'
 
@@ -7,7 +8,8 @@ interface IProps {
 }
 
 export const useTempQuery = ({ lat, lon }: IProps) => {
-  const { data: currentData } = useCurrentTempQuery({ lat, lon })
-  const { data: timePerData } = useTimePerTempQuery({ lat, lon })
-  return { currentData, timePerData }
+  const time = dayjs(new Date()).format('HH')
+  const { data: currentData, isLoading: currentTempLoading } = useCurrentTempQuery({ lat, lon, time })
+  const { data: timePerData, isLoading: timePerLoading } = useTimePerTempQuery({ lat, lon, time })
+  return { isLoading: currentTempLoading || timePerLoading, currentData, timePerData }
 }

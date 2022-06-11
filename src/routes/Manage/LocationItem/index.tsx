@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react'
 
 import { useTempQuery } from 'hooks/useTempQuery'
 import { ILocationData } from 'types/location'
+import Loading from './Loading'
 
 import styles from './locationItem.module.scss'
 
@@ -13,7 +14,7 @@ interface IProps {
 }
 
 const LocationItem = ({ data, idx, isEdit = false, setDeleteData }: IProps) => {
-  const { currentData, timePerData } = useTempQuery({ lat: data.lat, lon: data.lon })
+  const { isLoading, currentData, timePerData } = useTempQuery({ lat: data.lat, lon: data.lon })
 
   const handleCheck = () => {
     if (setDeleteData) {
@@ -21,6 +22,7 @@ const LocationItem = ({ data, idx, isEdit = false, setDeleteData }: IProps) => {
     }
   }
 
+  if (isLoading) return <Loading />
   if (!currentData || !timePerData) return null
   return (
     <div className={styles.locationItem}>
