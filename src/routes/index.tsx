@@ -1,7 +1,7 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useMount } from 'react-use'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import dayjs from 'dayjs'
 import store from 'store'
 
@@ -14,7 +14,7 @@ import { locationState } from 'states/location'
 
 const App = () => {
   const setTheme = useSetRecoilState(themeState)
-  const setLocationData = useSetRecoilState(locationState)
+  const [locationData, setLocationData] = useRecoilState(locationState)
   const localLocationData = store.get('locationData') || []
 
   useMount(() => {
@@ -26,12 +26,18 @@ const App = () => {
     setLocationData(localLocationData)
   })
 
+  useEffect(() => {}, [locationData])
+
+  const isData = useMemo(() => {
+    return localLocationData.length !== 0
+  }, [localLocationData.length])
+
   const home = useMemo(() => {
-    if (localLocationData.length === 0) {
+    if (!isData) {
       return <Navigate to='manage' />
     }
     return <Weather />
-  }, [localLocationData.length])
+  }, [isData])
 
   return (
     <div className={styles.appWrapper}>

@@ -2,7 +2,6 @@ import { useState, UIEvent, useEffect, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
 import { useParams } from 'react-router-dom'
 import cx from 'classnames'
-import store from 'store'
 
 import { locationState } from 'states/location'
 import { useTempQuery } from 'hooks/useTempQuery'
@@ -29,7 +28,6 @@ const WeatherContainer = () => {
   const { lat, lon, name } = locationData[targetIdx]
   const { isLoading, currentData, timePerData } = useTempQuery({ lat, lon })
   const [currentTime, setCurrentTime] = useState(dayjs(new Date()).format('HH:mm'))
-  store.set('locationData', locationData)
 
   const opacity = 1 - (220 - height) / 50 >= 0 ? 1 - (220 - height) / 50 : 0
 
