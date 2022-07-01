@@ -1,4 +1,4 @@
-import { useState, UIEvent, useEffect } from 'react'
+import { useState, UIEvent, useEffect, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
 import { useParams } from 'react-router-dom'
 import cx from 'classnames'
@@ -21,25 +21,28 @@ import dayjs from 'dayjs'
 
 const WeatherContainer = () => {
   const { city } = useParams()
+  const timerRef = useRef<NodeJS.Timer | undefined>(undefined)
   const locationData = useRecoilValue(locationState)
   const targetIdx = !city ? 0 : locationData.findIndex((location) => location.name === city)
   const isAside = useRecoilValue(asideOpenState)
   const [height, setHeight] = useState(220)
-  const opacity = 1 - (220 - height) / 50 >= 0 ? 1 - (220 - height) / 50 : 0
   const { lat, lon, name } = locationData[targetIdx]
   const { isLoading, currentData, timePerData } = useTempQuery({ lat, lon })
   const [currentTime, setCurrentTime] = useState(dayjs(new Date()).format('HH:mm'))
   store.set('locationData', locationData)
 
+  const opacity = 1 - (220 - height) / 50 >= 0 ? 1 - (220 - height) / 50 : 0
+
   useEffect(() => {
-    const timer = setInterval(() => {
+    timerRef.current = setInterval(() => {
       const now = dayjs(new Date()).format('HH:mm')
       if (currentTime !== now) {
         setCurrentTime(now)
       }
     }, 1000)
+
     return () => {
-      clearInterval(timer)
+      clearInterval(timerRef.current)
     }
   }, [currentTime])
 
