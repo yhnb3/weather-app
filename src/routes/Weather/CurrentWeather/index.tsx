@@ -41,6 +41,7 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height, time 
           {name}
         </div>
       </div>
+      <h2 className={styles.allyHidden}>현재 날씨 정보</h2>
       <section>
         <div className={styles.currentMain}>
           <div className={styles.currentMainLeft}>
