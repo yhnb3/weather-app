@@ -22,23 +22,26 @@ const EtcInfo = ({ uvi, wind, humidity }: IProps) => {
     return `낮음(${value})`
   }
   return (
-    <div className={cx(styles.etcInfoContainer, { [styles.isDark]: theme === 'dark' })}>
-      <div className={styles.infoItem}>
-        <GlassesIcon className={styles.glassIcon} />
-        <div className={styles.type}>자외선지수</div>
-        <div className={styles.value}>{uviString()}</div>
-      </div>
-      <div className={styles.infoItem}>
-        <WindIcon className={styles.windIcon} />
-        <div className={styles.type}>바람</div>
-        <div className={styles.value}>{Math.floor(wind)}m/s</div>
-      </div>
-      <div className={styles.infoItem}>
-        <HumidityIcon className={styles.humidityIcon} />
-        <div className={styles.type}>습도</div>
-        <div className={styles.value}>{Math.floor(humidity)}%</div>
-      </div>
-    </div>
+    <>
+      <h2 className={styles.allyHidden}>기타 정보</h2>
+      <section className={cx(styles.etcInfoContainer, { [styles.isDark]: theme === 'dark' })}>
+        <div className={styles.infoItem}>
+          <GlassesIcon className={styles.glassIcon} />
+          <div className={styles.type}>자외선지수</div>
+          <div className={styles.value}>{uviString()}</div>
+        </div>
+        <div className={styles.infoItem}>
+          <WindIcon className={styles.windIcon} />
+          <div className={styles.type}>바람</div>
+          <div className={styles.value}>{Math.floor(wind)}m/s</div>
+        </div>
+        <div className={styles.infoItem}>
+          <HumidityIcon className={styles.humidityIcon} />
+          <div className={styles.type}>습도</div>
+          <div className={styles.value}>{Math.floor(humidity)}%</div>
+        </div>
+      </section>
+    </>
   )
 }
 

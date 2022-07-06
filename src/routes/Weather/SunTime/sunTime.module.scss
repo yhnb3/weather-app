@@ -1,5 +1,16 @@
 @use '/src/styles/constants/colors';
 
+h2 {
+  &.allyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+}
+
 .sunTimeContainer {
   display: flex;
   flex-direction: row;

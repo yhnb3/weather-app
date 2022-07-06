@@ -52,7 +52,8 @@ const WeatherContainer = () => {
   if (!currentData || !timePerData) return null
   return (
     <div className={cx(styles.weaterContainer, { [styles.isAside]: isAside })}>
-      <div className={cx(styles.outerContainer, { [styles.isAside]: isAside })}>
+      <h1 className={styles.allyHidden}>{name}</h1>
+      <article className={cx(styles.outerContainer, { [styles.isAside]: isAside })}>
         <header style={{ height: `${height}px` }}>
           <CurrentWeather
             currentData={currentData}
@@ -63,7 +64,7 @@ const WeatherContainer = () => {
             time={currentTime}
           />
         </header>
-        <main onScroll={handleScroll}>
+        <div className={styles.scrollFriendly} onScroll={handleScroll}>
           <HourlyWeather timePerData={timePerData} />
           <DailyWeather timePerData={timePerData} />
           <SunTime sunRise={currentData.sys.sunrise} sunSet={currentData.sys.sunset} />
@@ -72,12 +73,12 @@ const WeatherContainer = () => {
             humidity={timePerData.daily[0].humidity}
             wind={timePerData.daily[0].wind_speed}
           />
-        </main>
-      </div>
+        </div>
+      </article>
 
-      <aside className={cx({ [styles.isAside]: isAside })}>
+      <nav className={cx({ [styles.isAside]: isAside })}>
         <Aside />
-      </aside>
+      </nav>
     </div>
   )
 }

@@ -41,13 +41,15 @@ const App = () => {
 
   return (
     <div className={styles.appWrapper}>
-      <Routes>
-        <Route path='/' element={home}>
-          <Route path=':city' element={<Weather />} />
-        </Route>
-        <Route path='manage' element={<Manage />} />
-        <Route path='*' element={<div>404</div>} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path='/' element={home}>
+            <Route path=':city' element={<Weather />} />
+          </Route>
+          <Route path='manage' element={<Manage />} />
+          <Route path='*' element={<div>404</div>} />
+        </Routes>
+      </main>
     </div>
   )
 }

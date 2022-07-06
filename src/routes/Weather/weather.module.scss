@@ -41,13 +41,24 @@
       background-color: colors.$WHITE;
     }
 
-    main {
+    h1 {
+      &.allyHidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: polygon(0 0, 0 0, 0 0);
+      }
+    }
+
+    .scrollFriendly {
       height: 640px;
       padding-top: 220px;
       overflow: auto;
     }
 
-    aside {
+    nav {
       position: absolute;
       top: 0;
       left: -310px;

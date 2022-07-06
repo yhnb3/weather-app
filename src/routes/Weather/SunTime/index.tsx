@@ -20,18 +20,21 @@ const SunTime = ({ sunRise, sunSet }: IProps) => {
     return `${ampm} ${hour}:${minute}`
   }
   return (
-    <div className={cx(styles.sunTimeContainer, { [styles.isDark]: theme === 'dark' })}>
-      <div className={styles.itemContainer}>
-        <div className={styles.type}>일출</div>
-        <div className={styles.time}>{timeFormat(sunRise)}</div>
-        <SunriseIcon className={styles.sunriseIcon} />
-      </div>
-      <div className={styles.itemContainer}>
-        <div className={styles.type}>일몰</div>
-        <div className={styles.time}>{timeFormat(sunSet)}</div>
-        <SunsetIcon className={styles.sunsetIcon} />
-      </div>
-    </div>
+    <>
+      <h2 className={styles.allyHidden}>일출 및 일몰 정보</h2>
+      <section className={cx(styles.sunTimeContainer, { [styles.isDark]: theme === 'dark' })}>
+        <div className={styles.itemContainer}>
+          <div className={styles.type}>일출</div>
+          <div className={styles.time}>{timeFormat(sunRise)}</div>
+          <SunriseIcon className={styles.sunriseIcon} />
+        </div>
+        <div className={styles.itemContainer}>
+          <div className={styles.type}>일몰</div>
+          <div className={styles.time}>{timeFormat(sunSet)}</div>
+          <SunsetIcon className={styles.sunsetIcon} />
+        </div>
+      </section>
+    </>
   )
 }
 

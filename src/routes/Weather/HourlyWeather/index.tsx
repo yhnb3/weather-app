@@ -17,16 +17,19 @@ const HourlyWeather = ({ timePerData }: IProps) => {
   if (timePerData === undefined) return null
 
   return (
-    <div
-      className={cx(
-        styles.hourContainer,
-        { [styles.notIsAfter]: !isAfter },
-        { [styles.notIsBefore]: !isBefore },
-        { [styles.isDark]: isDark }
-      )}
-    >
-      <HourList hourlyData={timePerData.hourly.slice(1, 20)} setIsAfter={setIsAfter} setIsBefore={setIsBefore} />
-    </div>
+    <>
+      <h2 className={styles.allyHidden}>시간별 날씨</h2>
+      <section
+        className={cx(
+          styles.hourContainer,
+          { [styles.notIsAfter]: !isAfter },
+          { [styles.notIsBefore]: !isBefore },
+          { [styles.isDark]: isDark }
+        )}
+      >
+        <HourList hourlyData={timePerData.hourly.slice(1, 20)} setIsAfter={setIsAfter} setIsBefore={setIsBefore} />
+      </section>
+    </>
   )
 }
 

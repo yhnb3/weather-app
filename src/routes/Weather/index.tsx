@@ -16,7 +16,9 @@ const Weather = () => {
   if (locationData.length === 0) return null
   return (
     <div className={cx(styles.pageContainer, { [styles.isDark]: isDark })}>
-      <WeatherContainer />
+      <article>
+        <WeatherContainer />
+      </article>
     </div>
   )
 }
