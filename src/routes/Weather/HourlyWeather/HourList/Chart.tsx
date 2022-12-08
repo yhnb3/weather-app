@@ -16,6 +16,7 @@ const Chart = ({ hourlyData }: IProps) => {
       x: String(item.temp),
     }
   })
+  hourData.unshift({ y: 3, x: '3' })
   return (
     <VictoryChart
       theme={VictoryTheme.material}
