@@ -29,14 +29,16 @@ const DailyListItem = ({ data }: IProps) => {
             src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
             alt={data.weather[0].description}
           />
-          <span>
-            {Math.round(data.temp.min)}
-            <sup>°</sup>
-          </span>
-          <span>
-            {Math.round(data.temp.max)}
-            <sup>°</sup>
-          </span>
+          <div className={styles.temperatureBox}>
+            <span>
+              {Math.round(data.temp.min)}
+              <sup>°</sup>
+            </span>
+            <span>
+              {Math.round(data.temp.max)}
+              <sup>°</sup>
+            </span>
+          </div>
         </div>
       </div>
     </li>
