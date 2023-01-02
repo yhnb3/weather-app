@@ -67,7 +67,7 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height, time 
           {name}
         </div>
         <div className={styles.tempBox}>
-          <div style={{ transform: `translate(${1.25 * (220 - height)}px, -${220 - height}px)` }}>
+          <div style={{ transform: `translate(${1.5 * (220 - height)}px, -${220 - height}px)` }}>
             {Math.round(dailyData[0].temp.max)}° / {Math.round(timePerData.daily[0].temp.min)}°{' '}
           </div>
           <div
@@ -77,7 +77,7 @@ const CurrentWeather = ({ currentData, timePerData, name, opacity, height, time 
             체감온도 {Math.round(currentData.main.feels_like)}°
           </div>
         </div>
-        <div className={styles.day} style={{ transform: `translate(${1.25 * (220 - height)}px, -${220 - height}px)` }}>
+        <div className={styles.day} style={{ transform: `translate(${1.5 * (220 - height)}px, -${220 - height}px)` }}>
           {getDay(Number(dayjs.unix(currentData.dt).format('d')))}요일, {time}
         </div>
       </section>
