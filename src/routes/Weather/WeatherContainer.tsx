@@ -45,13 +45,13 @@ const WeatherContainer = () => {
   }, [currentTime])
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
-    setHeight(220 - event.currentTarget.scrollTop >= 120 ? 220 - event.currentTarget.scrollTop : 120)
+    setHeight(220 - event.currentTarget.scrollTop >= 130 ? 220 - event.currentTarget.scrollTop : 130)
   }
 
   if (isLoading) return <Loading />
   if (!currentData || !timePerData) return null
   return (
-    <div className={cx(styles.weaterContainer, { [styles.isAside]: isAside })}>
+    <div className={cx(styles.weatherContainer, { [styles.isAside]: isAside })}>
       <h1 className={styles.allyHidden}>{name}</h1>
       <article className={cx(styles.outerContainer, { [styles.isAside]: isAside })}>
         <header style={{ height: `${height}px` }}>
